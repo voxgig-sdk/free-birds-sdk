@@ -1,0 +1,44 @@
+# BasicBirdFlow
+
+main: kit: flow: BasicBirdFlow:
+{
+  entity: "bird",
+  kind: "basic",
+  name: "BasicBirdFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "bird_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "bird_ref01",
+        srcdatavar: "bird_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "bird01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-bird_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBirdFlow"
+}

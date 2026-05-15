@@ -1,0 +1,272 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Free Birds API",
+    "description": "The Free Birds API offers accessible endpoints to retrieve and manage various bird data ideal for development purposes. It supports multiple features including searching, sorting, and limiting results, making it a versatile tool for testing and integration in applications.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://freetestapi.com/apis/birds"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://freetestapi.com/api/v1",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/birds": {
+      "get": {
+        "summary": "Get all birds",
+        "description": "Retrieve a list of birds with optional filtering, sorting, and pagination capabilities.",
+        "operationId": "getBirds",
+        "tags": [
+          "Birds"
+        ],
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search term to filter birds by name or other attributes",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Field to sort results by",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "name",
+                "species",
+                "family",
+                "habitat"
+              ]
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Sort order",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "asc"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of results to return",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 10
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Bird"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/birds/{id}": {
+      "get": {
+        "summary": "Get bird by ID",
+        "description": "Retrieve detailed information about a specific bird by its unique identifier.",
+        "operationId": "getBirdById",
+        "tags": [
+          "Birds"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique identifier of the bird",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bird"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bird not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Bird": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Unique identifier for the bird",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "Common name of the bird",
+            "example": "American Robin"
+          },
+          "species": {
+            "type": "string",
+            "description": "Scientific species name",
+            "example": "Turdus migratorius"
+          },
+          "family": {
+            "type": "string",
+            "description": "Bird family classification",
+            "example": "Turdidae"
+          },
+          "habitat": {
+            "type": "string",
+            "description": "Primary habitat of the bird",
+            "example": "Woodlands, gardens, parks"
+          },
+          "place_of_found": {
+            "type": "string",
+            "description": "Geographic location where the bird is commonly found",
+            "example": "North America"
+          },
+          "diet": {
+            "type": "string",
+            "description": "Primary diet of the bird",
+            "example": "Insects, fruits, berries"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed description of the bird",
+            "example": "A migratory songbird with a distinctive orange-red breast"
+          },
+          "weight_kg": {
+            "type": "number",
+            "format": "float",
+            "description": "Average weight in kilograms",
+            "example": 0.077
+          },
+          "height_cm": {
+            "type": "number",
+            "format": "float",
+            "description": "Average height in centimeters",
+            "example": 25
+          },
+          "image": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to an image of the bird",
+            "example": "https://example.com/images/american-robin.jpg"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "message": {
+            "type": "string",
+            "description": "Detailed error description"
+          },
+          "statusCode": {
+            "type": "integer",
+            "description": "HTTP status code"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Birds",
+      "description": "Operations related to bird data"
+    }
+  ]
+}

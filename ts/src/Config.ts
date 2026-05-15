@@ -1,0 +1,269 @@
+
+import { BaseFeature } from './feature/base/BaseFeature'
+import { TestFeature } from './feature/test/TestFeature'
+
+
+
+const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
+   test: TestFeature
+
+}
+
+
+class Config {
+
+  makeFeature(this: any, fn: string) {
+    const fc = FEATURE_CLASS[fn]
+    const fi = new fc()
+    // TODO: errors etc
+    return fi
+  }
+
+
+  main = {
+    name: 'ProjectName',
+  }
+
+
+  feature = {
+     test:     {
+      "options": {
+        "active": false
+      }
+    }
+
+  }
+
+
+  options = {
+    base: 'https://freetestapi.com/api/v1',
+
+    auth: {
+      prefix: 'Bearer',
+    },
+
+    headers: {
+      "content-type": "application/json"
+    },
+
+    entity: {
+      
+      bird: {
+      },
+
+    }
+  }
+
+
+  entity = {
+    "bird": {
+      "fields": [
+        {
+          "name": "description",
+          "req": false,
+          "type": "`$STRING`",
+          "active": true,
+          "index$": 0
+        },
+        {
+          "name": "diet",
+          "req": false,
+          "type": "`$STRING`",
+          "active": true,
+          "index$": 1
+        },
+        {
+          "name": "family",
+          "req": false,
+          "type": "`$STRING`",
+          "active": true,
+          "index$": 2
+        },
+        {
+          "name": "habitat",
+          "req": false,
+          "type": "`$STRING`",
+          "active": true,
+          "index$": 3
+        },
+        {
+          "name": "height_cm",
+          "req": false,
+          "type": "`$NUMBER`",
+          "active": true,
+          "index$": 4
+        },
+        {
+          "name": "id",
+          "req": false,
+          "type": "`$INTEGER`",
+          "active": true,
+          "index$": 5
+        },
+        {
+          "name": "image",
+          "req": false,
+          "type": "`$STRING`",
+          "active": true,
+          "index$": 6
+        },
+        {
+          "name": "name",
+          "req": false,
+          "type": "`$STRING`",
+          "active": true,
+          "index$": 7
+        },
+        {
+          "name": "place_of_found",
+          "req": false,
+          "type": "`$STRING`",
+          "active": true,
+          "index$": 8
+        },
+        {
+          "name": "species",
+          "req": false,
+          "type": "`$STRING`",
+          "active": true,
+          "index$": 9
+        },
+        {
+          "name": "weight_kg",
+          "req": false,
+          "type": "`$NUMBER`",
+          "active": true,
+          "index$": 10
+        }
+      ],
+      "name": "bird",
+      "op": {
+        "list": {
+          "name": "list",
+          "points": [
+            {
+              "args": {
+                "query": [
+                  {
+                    "example": 10,
+                    "kind": "query",
+                    "name": "limit",
+                    "orig": "limit",
+                    "reqd": false,
+                    "type": "`$INTEGER`",
+                    "active": true
+                  },
+                  {
+                    "example": "asc",
+                    "kind": "query",
+                    "name": "order",
+                    "orig": "order",
+                    "reqd": false,
+                    "type": "`$STRING`",
+                    "active": true
+                  },
+                  {
+                    "example": 1,
+                    "kind": "query",
+                    "name": "page",
+                    "orig": "page",
+                    "reqd": false,
+                    "type": "`$INTEGER`",
+                    "active": true
+                  },
+                  {
+                    "kind": "query",
+                    "name": "search",
+                    "orig": "search",
+                    "reqd": false,
+                    "type": "`$STRING`",
+                    "active": true
+                  },
+                  {
+                    "kind": "query",
+                    "name": "sort",
+                    "orig": "sort",
+                    "reqd": false,
+                    "type": "`$STRING`",
+                    "active": true
+                  }
+                ]
+              },
+              "method": "GET",
+              "orig": "/birds",
+              "parts": [
+                "birds"
+              ],
+              "select": {
+                "exist": [
+                  "limit",
+                  "order",
+                  "page",
+                  "search",
+                  "sort"
+                ]
+              },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "active": true,
+              "index$": 0
+            }
+          ],
+          "input": "data",
+          "key$": "list"
+        },
+        "load": {
+          "name": "load",
+          "points": [
+            {
+              "args": {
+                "params": [
+                  {
+                    "kind": "param",
+                    "name": "id",
+                    "orig": "id",
+                    "reqd": true,
+                    "type": "`$INTEGER`",
+                    "active": true
+                  }
+                ]
+              },
+              "method": "GET",
+              "orig": "/birds/{id}",
+              "parts": [
+                "birds",
+                "{id}"
+              ],
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "active": true,
+              "index$": 0
+            }
+          ],
+          "input": "data",
+          "key$": "load"
+        }
+      },
+      "relations": {
+        "ancestors": []
+      }
+    }
+  }
+}
+
+
+const config = new Config()
+
+export {
+  config
+}
+

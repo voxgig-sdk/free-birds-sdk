@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://freetestapi.com/apis/birds"
+      }
+      description: "The Free Birds API offers accessible endpoints to retrieve and manage various bird data ideal for development purposes. It supports multiple features including searching, sorting, and limiting results, making it a versatile tool for testing and integration in applications."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://freetestapi.com/api/v1"
+        }
+      ]
+      title: "Free Birds API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

@@ -1,0 +1,61 @@
+{
+  "existing": {
+    "bird": {
+      "BIRD00": {
+        "description": "s6e",
+        "diet": "s6f",
+        "family": "s70",
+        "habitat": "s71",
+        "height_cm": 114,
+        "id": "BIRD00",
+        "image": "s74",
+        "name": "s75",
+        "place_of_found": "s76",
+        "species": "s77",
+        "weight_kg": 120
+      },
+      "BIRD01": {
+        "description": "sdc",
+        "diet": "sdd",
+        "family": "sde",
+        "habitat": "sdf",
+        "height_cm": 224,
+        "id": "BIRD01",
+        "image": "se2",
+        "name": "se3",
+        "place_of_found": "se4",
+        "species": "se5",
+        "weight_kg": 230
+      },
+      "BIRD02": {
+        "description": "s14a",
+        "diet": "s14b",
+        "family": "s14c",
+        "habitat": "s14d",
+        "height_cm": 334,
+        "id": "BIRD02",
+        "image": "s150",
+        "name": "s151",
+        "place_of_found": "s152",
+        "species": "s153",
+        "weight_kg": 340
+      }
+    }
+  },
+  "new": {
+    "bird": {
+      "bird_ref01": {
+        "description": "s1b8",
+        "diet": "s1b9",
+        "family": "s1ba",
+        "habitat": "s1bb",
+        "height_cm": 444,
+        "image": "s1be",
+        "name": "s1bf",
+        "place_of_found": "s1c0",
+        "species": "s1c1",
+        "weight_kg": 450
+      }
+    }
+  }
+}
