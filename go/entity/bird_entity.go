@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/free-birds-sdk/core"
+	"github.com/voxgig-sdk/free-birds-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/free-birds-sdk/go/utility/struct"
 )
 
 type BirdEntity struct {

@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/free-birds-sdk"
-	"github.com/voxgig-sdk/free-birds-sdk/core"
+	sdk "github.com/voxgig-sdk/free-birds-sdk/go"
+	"github.com/voxgig-sdk/free-birds-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/free-birds-sdk/go/utility/struct"
 )
 
 func TestBirdEntity(t *testing.T) {

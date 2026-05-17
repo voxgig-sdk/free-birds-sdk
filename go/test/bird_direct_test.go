@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/free-birds-sdk"
-	"github.com/voxgig-sdk/free-birds-sdk/core"
+	sdk "github.com/voxgig-sdk/free-birds-sdk/go"
+	"github.com/voxgig-sdk/free-birds-sdk/go/core"
 )
 
 func TestBirdDirect(t *testing.T) {
