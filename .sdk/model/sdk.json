@@ -16,7 +16,15 @@
           }
         ],
         "title": "Free Birds API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Browse a small bird dataset for prototyping, with search, sort, and limit query params",
+        "homepage": "https://freetestapi.com/api/v1",
+        "docs_url": "https://freepublicapis.com/free-birds-api",
+        "about_md": "The Free Birds API is one of several sample datasets published by [freetestapi.com](https://freetestapi.com), a service that exposes static JSON collections for use in tutorials, demos, and front-end prototypes. The bird dataset is intended for development and testing rather than production use.\n\nWhat you get from the API:\n\n- A `GET /birds` endpoint that returns a JSON list of bird records\n- Standard freetestapi query parameters for filtering and pagination, such as `search`, `sort`, and `limit`\n- A single record can be retrieved by id via `GET /birds/{id}`\n\nOperational notes: no authentication is required. The freepublicapis catalogue entry reports that CORS is disabled, so requests from a browser may need a proxy. Reliability is inconsistent — the catalogue's recent health checks show the search endpoint failing — so treat this as a sandbox dataset rather than a stable source.",
+        "entity_desc": {
+          "bird": "A bird record served under `/birds`, with a single-record form at `/birds/{id}` and list filtering via `search`, `sort`, and `limit` query parameters."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -24,7 +32,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "bird": {

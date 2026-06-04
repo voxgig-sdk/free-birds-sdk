@@ -136,14 +136,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'FREEBIRDS_TEST_BIRD_ENTID': {},
     'FREEBIRDS_TEST_LIVE': 'FALSE',
-    'FREEBIRDS_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.FREEBIRDS_TEST_LIVE
 
   if (live) {
     const client = new FreeBirdsSDK({
-      apikey: env.FREEBIRDS_APIKEY,
     })
 
     let idmap: any = env['FREEBIRDS_TEST_BIRD_ENTID']

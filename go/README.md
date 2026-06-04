@@ -28,16 +28,13 @@ package main
 
 import (
     "fmt"
-    "os"
 
     sdk "github.com/voxgig-sdk/free-birds-sdk/go"
     "github.com/voxgig-sdk/free-birds-sdk/go/core"
 )
 
 func main() {
-    client := sdk.NewFreeBirdsSDK(map[string]any{
-        "apikey": os.Getenv("FREE-BIRDS_APIKEY"),
-    })
+    client := sdk.NewFreeBirdsSDK(map[string]any{})
 ```
 
 ### 2. List birds
@@ -157,7 +154,6 @@ Create a `.env.local` file at the project root:
 
 ```
 FREE-BIRDS_TEST_LIVE=TRUE
-FREE-BIRDS_APIKEY=<your-key>
 ```
 
 Then run:
@@ -179,7 +175,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `"apikey"` | `string` | API key for authentication. |
 | `"base"` | `string` | Base URL of the API server. |
 | `"prefix"` | `string` | URL path prefix prepended to all requests. |
 | `"suffix"` | `string` | URL path suffix appended to all requests. |

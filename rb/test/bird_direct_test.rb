@@ -116,14 +116,12 @@ def bird_direct_setup(mockres)
   env = Runner.env_override({
     "FREEBIRDS_TEST_BIRD_ENTID" => {},
     "FREEBIRDS_TEST_LIVE" => "FALSE",
-    "FREEBIRDS_APIKEY" => "NONE",
   })
 
   live = env["FREEBIRDS_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["FREEBIRDS_APIKEY"],
     }
     client = FreeBirdsSDK.new(merged_opts)
     return {

@@ -120,7 +120,6 @@ function basicSetup(extra?: any) {
     'FREE_BIRDS_TEST_BIRD_ENTID': idmap,
     'FREE_BIRDS_TEST_LIVE': 'FALSE',
     'FREE_BIRDS_TEST_EXPLAIN': 'FALSE',
-    'FREE_BIRDS_APIKEY': 'NONE',
   })
 
   idmap = env['FREE_BIRDS_TEST_BIRD_ENTID']
@@ -130,7 +129,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new FreeBirdsSDK(merge([
       {
-        apikey: env.FREE_BIRDS_APIKEY,
       },
       extra
     ]))
