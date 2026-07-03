@@ -135,6 +135,7 @@ func birdBasicSetup(extra map[string]any) *entityTestSetup {
 		"FREEBIRDS_TEST_BIRD_ENTID": idmap,
 		"FREEBIRDS_TEST_LIVE":      "FALSE",
 		"FREEBIRDS_TEST_EXPLAIN":   "FALSE",
+		"FREEBIRDS_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["FREEBIRDS_TEST_BIRD_ENTID"])
@@ -145,6 +146,7 @@ func birdBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["FREEBIRDS_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["FREEBIRDS_APIKEY"],
 			},
 			extra,
 		})

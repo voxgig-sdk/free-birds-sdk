@@ -1,7 +1,11 @@
 package = "voxgig-sdk-free-birds"
-version = "0.0-1"
+version = "0.0.1-1"
 source = {
-  url = "git://github.com/voxgig-sdk/free-birds-sdk.git"
+  -- git+https (GitHub dropped git:// in 2022); pin the install to the release
+  -- tag pushed by `make publish`, and point at the lua/ subdir of the monorepo.
+  url = "git+https://github.com/voxgig-sdk/free-birds-sdk.git",
+  tag = "lua/v0.0.1",
+  dir = "free-birds-sdk/lua"
 }
 description = {
   summary = "FreeBirds SDK for Lua",

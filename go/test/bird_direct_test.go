@@ -194,12 +194,14 @@ func birdDirectSetup(mockres any) *birdDirectSetupResult {
 	env := envOverride(map[string]any{
 		"FREEBIRDS_TEST_BIRD_ENTID": map[string]any{},
 		"FREEBIRDS_TEST_LIVE":    "FALSE",
+		"FREEBIRDS_APIKEY":       "NONE",
 	})
 
 	live := env["FREEBIRDS_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["FREEBIRDS_APIKEY"],
 		}
 		client := sdk.NewFreeBirdsSDK(mergedOpts)
 

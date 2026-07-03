@@ -1,6 +1,11 @@
 # FreeBirds TypeScript SDK
 
-The TypeScript SDK for the FreeBirds API. Provides a type-safe, entity-oriented interface with full async/await support.
+
+
+The TypeScript SDK for the FreeBirds API — a type-safe, entity-oriented client with full async/await support.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -17,7 +22,9 @@ loading a specific record.
 ```ts
 import { FreeBirdsSDK } from 'free-birds'
 
-const client = new FreeBirdsSDK({})
+const client = new FreeBirdsSDK({
+  apikey: process.env.FREE-BIRDS_APIKEY,
+})
 ```
 
 ### 2. List birds
@@ -92,7 +99,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new FreeBirdsSDK()
+const client = new FreeBirdsSDK({ apikey: '...' })
 const testClient = client.tester()
 ```
 
@@ -128,6 +135,7 @@ const logger = {
 }
 
 const client = new FreeBirdsSDK({
+  apikey: '...',
   extend: [logger],
 })
 ```
@@ -138,6 +146,7 @@ Create a `.env.local` file at the project root:
 
 ```
 FREE-BIRDS_TEST_LIVE=TRUE
+FREE-BIRDS_APIKEY=<your-key>
 ```
 
 Then run:
@@ -155,6 +164,7 @@ cd ts && npm test
 
 ```ts
 new FreeBirdsSDK(options?: {
+  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -165,6 +175,7 @@ new FreeBirdsSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

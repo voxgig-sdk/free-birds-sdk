@@ -1,20 +1,8 @@
 # FreeBirds SDK
 
-Browse a small bird dataset for prototyping, with search, sort, and limit query params
+Free Birds API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Free Birds API
-
-The Free Birds API is one of several sample datasets published by [freetestapi.com](https://freetestapi.com), a service that exposes static JSON collections for use in tutorials, demos, and front-end prototypes. The bird dataset is intended for development and testing rather than production use.
-
-What you get from the API:
-
-- A `GET /birds` endpoint that returns a JSON list of bird records
-- Standard freetestapi query parameters for filtering and pagination, such as `search`, `sort`, and `limit`
-- A single record can be retrieved by id via `GET /birds/{id}`
-
-Operational notes: no authentication is required. The freepublicapis catalogue entry reports that CORS is disabled, so requests from a browser may need a proxy. Reliability is inconsistent — the catalogue's recent health checks show the search endpoint failing — so treat this as a sandbox dataset rather than a stable source.
 
 ## Try it
 
@@ -48,29 +36,31 @@ gem install free-birds-sdk
 luarocks install free-birds-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { FreeBirdsSDK } from 'free-birds'
 
-const client = new FreeBirdsSDK({})
+const client = new FreeBirdsSDK({
+  apikey: process.env.FREE-BIRDS_APIKEY,
+})
 
 // List all birds
 const birds = await client.Bird().list()
+console.log(birds.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -100,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Bird** | A bird record served under `/birds`, with a single-record form at `/birds/{id}` and list filtering via `search`, `sort`, and `limit` query parameters. | `/birds` |
+| **Bird** |  | `/birds` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -110,17 +100,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from freebirds_sdk import FreeBirdsSDK
 
-client = FreeBirdsSDK({})
+client = FreeBirdsSDK({
+    "apikey": os.environ.get("FREE-BIRDS_APIKEY"),
+})
 
 # List all birds
-birds, err = client.Bird(None).list(None, None)
+birds, err = client.Bird().list()
+print(birds)
 
 # Load a specific bird
-bird, err = client.Bird(None).load(
-    {"id": "example_id"}, None
-)
+bird, err = client.Bird().load({"id": "example_id"})
+print(bird)
 ```
 
 ### PHP
@@ -129,15 +122,17 @@ bird, err = client.Bird(None).load(
 <?php
 require_once 'freebirds_sdk.php';
 
-$client = new FreeBirdsSDK([]);
+$client = new FreeBirdsSDK([
+    "apikey" => getenv("FREE-BIRDS_APIKEY"),
+]);
 
 // List all birds
-[$birds, $err] = $client->Bird(null)->list(null, null);
+[$birds, $err] = $client->Bird()->list();
+print_r($birds);
 
 // Load a specific bird
-[$bird, $err] = $client->Bird(null)->load(
-    ["id" => "example_id"], null
-);
+[$bird, $err] = $client->Bird()->load(["id" => "example_id"]);
+print_r($bird);
 ```
 
 ### Golang
@@ -145,10 +140,13 @@ $client = new FreeBirdsSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/free-birds-sdk/go"
 
-client := sdk.NewFreeBirdsSDK(map[string]any{})
+client := sdk.NewFreeBirdsSDK(map[string]any{
+    "apikey": os.Getenv("FREE-BIRDS_APIKEY"),
+})
 
 // List all birds
 birds, err := client.Bird(nil).List(nil, nil)
+fmt.Println(birds)
 ```
 
 ### Ruby
@@ -156,15 +154,17 @@ birds, err := client.Bird(nil).List(nil, nil)
 ```ruby
 require_relative "FreeBirds_sdk"
 
-client = FreeBirdsSDK.new({})
+client = FreeBirdsSDK.new({
+  "apikey" => ENV["FREE-BIRDS_APIKEY"],
+})
 
 # List all birds
-birds, err = client.Bird(nil).list(nil, nil)
+birds, err = client.Bird().list
+puts birds
 
 # Load a specific bird
-bird, err = client.Bird(nil).load(
-  { "id" => "example_id" }, nil
-)
+bird, err = client.Bird().load({ "id" => "example_id" })
+puts bird
 ```
 
 ### Lua
@@ -172,15 +172,17 @@ bird, err = client.Bird(nil).load(
 ```lua
 local sdk = require("free-birds_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("FREE-BIRDS_APIKEY"),
+})
 
 -- List all birds
-local birds, err = client:Bird(nil):list(nil, nil)
+local birds, err = client:Bird():list()
+print(birds)
 
 -- Load a specific bird
-local bird, err = client:Bird(nil):load(
-  { id = "example_id" }, nil
-)
+local bird, err = client:Bird():load({ id = "example_id" })
+print(bird)
 ```
 
 ## Unit testing in offline mode
@@ -199,25 +201,21 @@ const result = await client.Bird().load({ id: 'test01' })
 ### Python
 
 ```python
-client = FreeBirdsSDK.test(None, None)
-result, err = client.Bird(None).load(
-    {"id": "test01"}, None
-)
+client = FreeBirdsSDK.test()
+result, err = client.Bird().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = FreeBirdsSDK::test(null, null);
-[$result, $err] = $client->Bird(null)->load(
-    ["id" => "test01"], null
-);
+$client = FreeBirdsSDK::test();
+[$result, $err] = $client->Bird()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Bird(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -226,19 +224,15 @@ result, err := client.Bird(nil).Load(
 ### Ruby
 
 ```ruby
-client = FreeBirdsSDK.test(nil, nil)
-result, err = client.Bird(nil).load(
-  { "id" => "test01" }, nil
-)
+client = FreeBirdsSDK.test
+result, err = client.Bird().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Bird(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Bird():load({ id = "test01" })
 ```
 
 ## How it works
@@ -342,11 +336,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Free Birds API
-
-- Upstream: [https://freetestapi.com/api/v1](https://freetestapi.com/api/v1)
-- API docs: [https://freepublicapis.com/free-birds-api](https://freepublicapis.com/free-birds-api)
 
 ---
 

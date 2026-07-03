@@ -102,6 +102,7 @@ def _bird_basic_setup(extra):
         "FREEBIRDS_TEST_BIRD_ENTID": idmap,
         "FREEBIRDS_TEST_LIVE": "FALSE",
         "FREEBIRDS_TEST_EXPLAIN": "FALSE",
+        "FREEBIRDS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -112,6 +113,7 @@ def _bird_basic_setup(extra):
     if env.get("FREEBIRDS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("FREEBIRDS_APIKEY"),
             },
             extra or {},
         ])
