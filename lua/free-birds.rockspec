@@ -8,12 +8,14 @@ source = {
   dir = "free-birds-sdk/lua"
 }
 description = {
-  summary = "FreeBirds SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Free Birds public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/free-birds-sdk",
+  issues_url = "https://github.com/voxgig-sdk/free-birds-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "free-birds" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

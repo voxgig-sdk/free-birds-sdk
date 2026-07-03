@@ -10,7 +10,7 @@ The PHP SDK for the FreeBirds API — an entity-oriented client using PHP conven
 
 ## Install
 ```bash
-composer require voxgig/free-birds-sdk
+composer require voxgig-sdk/free-birds
 ```
 
 

@@ -10,7 +10,7 @@ The TypeScript SDK for the FreeBirds API — a type-safe, entity-oriented client
 
 ## Install
 ```bash
-npm install free-birds
+npm install @voxgig-sdk/free-birds
 ```
 ## Tutorial: your first API call
 

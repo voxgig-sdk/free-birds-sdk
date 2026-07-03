@@ -10,13 +10,13 @@ The Ruby SDK for the FreeBirds API — an entity-oriented client using idiomatic
 
 ## Install
 ```bash
-gem install free-birds-sdk
+gem install voxgig-sdk-free-birds
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "free-birds-sdk"
+gem "voxgig-sdk-free-birds"
 ```
 
 Then run:

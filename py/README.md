@@ -10,7 +10,7 @@ The Python SDK for the FreeBirds API — an entity-oriented client following Pyt
 
 ## Install
 ```bash
-pip install free-birds-sdk
+pip install voxgig-sdk-free-birds
 ```
 
 Or install from source:
