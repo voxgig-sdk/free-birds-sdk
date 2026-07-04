@@ -50,16 +50,14 @@ class TestBirdEntity:
         bird_ref01_ent = client.Bird(None)
         bird_ref01_match = {}
 
-        bird_ref01_list_result, err = bird_ref01_ent.list(bird_ref01_match, None)
-        assert err is None
+        bird_ref01_list_result = bird_ref01_ent.list(bird_ref01_match, None)
         assert isinstance(bird_ref01_list_result, list)
 
         # LOAD
         bird_ref01_match_dt0 = {
             "id": bird_ref01_data["id"],
         }
-        bird_ref01_data_dt0_loaded, err = bird_ref01_ent.load(bird_ref01_match_dt0, None)
-        assert err is None
+        bird_ref01_data_dt0_loaded = bird_ref01_ent.load(bird_ref01_match_dt0, None)
         bird_ref01_data_dt0_load_result = helpers.to_map(bird_ref01_data_dt0_loaded)
         assert bird_ref01_data_dt0_load_result is not None
         assert bird_ref01_data_dt0_load_result["id"] == bird_ref01_data["id"]
@@ -102,7 +100,6 @@ def _bird_basic_setup(extra):
         "FREEBIRDS_TEST_BIRD_ENTID": idmap,
         "FREEBIRDS_TEST_LIVE": "FALSE",
         "FREEBIRDS_TEST_EXPLAIN": "FALSE",
-        "FREEBIRDS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _bird_basic_setup(extra):
     if env.get("FREEBIRDS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FREEBIRDS_APIKEY"),
             },
             extra or {},
         ])

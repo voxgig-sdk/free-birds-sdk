@@ -50,16 +50,14 @@ class BirdEntityTest extends TestCase
         $bird_ref01_ent = $client->Bird(null);
         $bird_ref01_match = [];
 
-        [$bird_ref01_list_result, $err] = $bird_ref01_ent->list($bird_ref01_match, null);
-        $this->assertNull($err);
+        $bird_ref01_list_result = $bird_ref01_ent->list($bird_ref01_match, null);
         $this->assertIsArray($bird_ref01_list_result);
 
         // LOAD
         $bird_ref01_match_dt0 = [
             "id" => $bird_ref01_data["id"],
         ];
-        [$bird_ref01_data_dt0_loaded, $err] = $bird_ref01_ent->load($bird_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $bird_ref01_data_dt0_loaded = $bird_ref01_ent->load($bird_ref01_match_dt0, null);
         $bird_ref01_data_dt0_load_result = Helpers::to_map($bird_ref01_data_dt0_loaded);
         $this->assertNotNull($bird_ref01_data_dt0_load_result);
         $this->assertEquals($bird_ref01_data_dt0_load_result["id"], $bird_ref01_data["id"]);
@@ -96,7 +94,6 @@ function bird_basic_setup($extra)
         "FREEBIRDS_TEST_BIRD_ENTID" => $idmap,
         "FREEBIRDS_TEST_LIVE" => "FALSE",
         "FREEBIRDS_TEST_EXPLAIN" => "FALSE",
-        "FREEBIRDS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function bird_basic_setup($extra)
     if ($env["FREEBIRDS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["FREEBIRDS_APIKEY"],
             ],
             $extra ?? [],
         ]);

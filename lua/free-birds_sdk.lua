@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:bird():list() / client:bird():load({ id = ... })
+function FreeBirdsSDK:bird(data)
+  local EntityMod = require("entity.bird_entity")
+  if data == nil then
+    if self._bird == nil then
+      self._bird = EntityMod.new(self, nil)
+    end
+    return self._bird
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:bird() instead.
 function FreeBirdsSDK:Bird(data)
   local EntityMod = require("entity.bird_entity")
   return EntityMod.new(self, data)

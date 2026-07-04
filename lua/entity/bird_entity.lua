@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch BirdLoadMatch
+---@param ctrl? table
+---@return Bird
+---@return string? err
 function BirdEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch BirdListMatch
+---@param ctrl? table
+---@return Bird[]
+---@return string? err
 function BirdEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

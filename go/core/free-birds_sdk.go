@@ -245,6 +245,9 @@ func (sdk *FreeBirdsSDK) Direct(fetchargs map[string]any) (map[string]any, error
 }
 
 
+// Bird returns a Bird entity bound to this client.
+// Idiomatic usage: client.Bird(nil).List(nil, nil) or
+// client.Bird(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FreeBirdsSDK) Bird(data map[string]any) FreeBirdsEntity {
 	return NewBirdEntityFunc(sdk, data)
 }

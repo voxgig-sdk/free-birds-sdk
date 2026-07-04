@@ -2,6 +2,8 @@
 
 import { BirdEntity } from './entity/BirdEntity'
 
+export type * from './FreeBirdsTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class FreeBirdsSDK {
 
 
 
+  _bird?: BirdEntity
+
+  // Idiomatic facade: `client.bird.list()` / `client.bird.load({ id })`.
+  get bird(): BirdEntity {
+    return (this._bird ??= new BirdEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.bird` instead. */
   Bird(data?: any) {
     const self = this
     return new BirdEntity(self,data)

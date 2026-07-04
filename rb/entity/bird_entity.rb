@@ -45,6 +45,7 @@ class BirdEntity
     end
   end
 
+  # @return [Bird, Hash] the current Bird data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class BirdEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Bird fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Bird.
+  #
+  # @param reqmatch [BirdLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Bird, Hash] the loaded Bird; raises FreeBirdsError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class BirdEntity
 
 
   
+  # List Bird items matching the given filter.
+  #
+  # @param reqmatch [BirdListMatch, Hash, nil] match filter (any subset of Bird fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Bird>, Array] the matching Bird items; raises FreeBirdsError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
