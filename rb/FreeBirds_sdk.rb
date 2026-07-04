@@ -208,13 +208,7 @@ class FreeBirdsSDK
   end
 
 
-  # Idiomatic facade: client.bird.list / client.bird.load({ "id" => ... })
-  def bird
-    require_relative 'entity/bird_entity'
-    @bird ||= BirdEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.bird instead.
+  # Canonical facade: client.Bird.list / client.Bird.load({ "id" => ... })
   def Bird(data = nil)
     require_relative 'entity/bird_entity'
     BirdEntity.new(self, data)

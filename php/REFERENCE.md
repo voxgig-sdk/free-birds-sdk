@@ -85,7 +85,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## BirdEntity
 
 ```php
-$bird = $client->bird();
+$bird = $client->Bird();
 ```
 
 ### Fields
@@ -111,7 +111,7 @@ $bird = $client->bird();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->bird()->list([]);
+$results = $client->Bird()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -119,7 +119,7 @@ $results = $client->bird()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->bird()->load(["id" => "bird_id"]);
+$result = $client->Bird()->load(["id" => "bird_id"]);
 ```
 
 ### Common Methods

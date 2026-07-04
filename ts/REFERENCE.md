@@ -109,7 +109,7 @@ Alias for `FreeBirdsSDK.test()`.
 ## BirdEntity
 
 ```ts
-const bird = client.bird
+const bird = client.Bird()
 ```
 
 ### Fields
@@ -135,7 +135,7 @@ const bird = client.bird
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.bird.list()
+const results = await client.Bird().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -143,7 +143,7 @@ const results = await client.bird.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.bird.load({ id: 'bird_id' })
+const result = await client.Bird().load({ id: 'bird_id' })
 ```
 
 ### Common Methods

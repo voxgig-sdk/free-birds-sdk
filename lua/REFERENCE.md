@@ -83,7 +83,7 @@ same parameters as `direct()`.
 ## BirdEntity
 
 ```lua
-local bird = client:bird(nil)
+local bird = client:Bird(nil)
 ```
 
 ### Fields
@@ -109,7 +109,7 @@ local bird = client:bird(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:bird():list()
+local results, err = client:Bird():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -117,7 +117,7 @@ local results, err = client:bird():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:bird():load({ id = "bird_id" })
+local result, err = client:Bird():load({ id = "bird_id" })
 ```
 
 ### Common Methods

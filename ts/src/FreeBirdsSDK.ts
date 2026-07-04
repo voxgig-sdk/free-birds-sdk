@@ -204,14 +204,7 @@ class FreeBirdsSDK {
 
 
 
-  _bird?: BirdEntity
-
-  // Idiomatic facade: `client.bird.list()` / `client.bird.load({ id })`.
-  get bird(): BirdEntity {
-    return (this._bird ??= new BirdEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.bird` instead. */
+  // Entity access: `client.Bird().list()` / `client.Bird().load({ id })`.
   Bird(data?: any) {
     const self = this
     return new BirdEntity(self,data)

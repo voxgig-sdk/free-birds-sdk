@@ -4,44 +4,45 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Bird:
-    description: Optional[str] = None
-    diet: Optional[str] = None
-    family: Optional[str] = None
-    habitat: Optional[str] = None
-    height_cm: Optional[float] = None
-    id: Optional[int] = None
-    image: Optional[str] = None
-    name: Optional[str] = None
-    place_of_found: Optional[str] = None
-    species: Optional[str] = None
-    weight_kg: Optional[float] = None
+class Bird(TypedDict, total=False):
+    description: str
+    diet: str
+    family: str
+    habitat: str
+    height_cm: float
+    id: int
+    image: str
+    name: str
+    place_of_found: str
+    species: str
+    weight_kg: float
 
 
-@dataclass
-class BirdLoadMatch:
+class BirdLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class BirdListMatch:
-    description: Optional[str] = None
-    diet: Optional[str] = None
-    family: Optional[str] = None
-    habitat: Optional[str] = None
-    height_cm: Optional[float] = None
-    id: Optional[int] = None
-    image: Optional[str] = None
-    name: Optional[str] = None
-    place_of_found: Optional[str] = None
-    species: Optional[str] = None
-    weight_kg: Optional[float] = None
-
+class BirdListMatch(TypedDict, total=False):
+    description: str
+    diet: str
+    family: str
+    habitat: str
+    height_cm: float
+    id: int
+    image: str
+    name: str
+    place_of_found: str
+    species: str
+    weight_kg: float

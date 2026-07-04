@@ -86,7 +86,7 @@ same parameters as `direct()`. Raises on error.
 ## BirdEntity
 
 ```ruby
-bird = client.bird
+bird = client.Bird
 ```
 
 ### Fields
@@ -112,7 +112,7 @@ bird = client.bird
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.bird.list(nil)
+results = client.Bird.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -120,7 +120,7 @@ results = client.bird.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.bird.load({ "id" => "bird_id" })
+result = client.Bird.load({ "id" => "bird_id" })
 ```
 
 ### Common Methods

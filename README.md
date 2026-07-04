@@ -26,9 +26,11 @@ import { FreeBirdsSDK } from '@voxgig-sdk/free-birds'
 
 const client = new FreeBirdsSDK()
 
-// List all birds
-const birds = await client.bird.list()
-console.log(birds.data)
+// List all birds (returns Bird[])
+const birds = await client.Bird().list()
+for (const bird of birds) {
+  console.log(bird)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -83,12 +85,13 @@ from freebirds_sdk import FreeBirdsSDK
 
 client = FreeBirdsSDK()
 
-# List all birds
-birds = client.bird.list()
-print(birds)
+# List all birds (returns a list, raises on error)
+birds = client.Bird().list({})
+for bird in birds:
+    print(bird)
 
-# Load a specific bird
-bird = client.bird.load({"id": "example_id"})
+# Load a specific bird (returns the record, raises on error)
+bird = client.Bird().load({"id": "example_id"})
 print(bird)
 ```
 
@@ -100,12 +103,12 @@ require_once 'freebirds_sdk.php';
 
 $client = new FreeBirdsSDK();
 
-// List all birds (throws on error)
-$birds = $client->bird()->list();
+// List all birds (returns an array; throws on error)
+$birds = $client->Bird()->list();
 print_r($birds);
 
-// Load a specific bird
-$bird = $client->bird()->load(["id" => "example_id"]);
+// Load a specific bird (returns the bare record; throws on error)
+$bird = $client->Bird()->load(["id" => "example_id"]);
 print_r($bird);
 ```
 
@@ -128,12 +131,12 @@ require_relative "FreeBirds_sdk"
 
 client = FreeBirdsSDK.new
 
-# List all birds
-birds = client.bird.list
+# List all birds (returns an Array; raises on error)
+birds = client.Bird.list
 puts birds
 
-# Load a specific bird
-bird = client.bird.load({ "id" => "example_id" })
+# Load a specific bird (returns the bare record; raises on error)
+bird = client.Bird.load({ "id" => "example_id" })
 puts bird
 ```
 
@@ -145,11 +148,11 @@ local sdk = require("free-birds_sdk")
 local client = sdk.new()
 
 -- List all birds
-local birds, err = client:bird():list()
+local birds, err = client:Bird():list()
 print(birds)
 
 -- Load a specific bird
-local bird, err = client:bird():load({ id = "example_id" })
+local bird, err = client:Bird():load({ id = "example_id" })
 print(bird)
 ```
 
@@ -162,22 +165,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = FreeBirdsSDK.test()
-const result = await client.bird.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const bird = await client.Bird().load({ id: 1 })
+// bird is a bare Bird populated with mock data
+console.log(bird)
 ```
 
 ### Python
 
 ```python
 client = FreeBirdsSDK.test()
-result = client.bird.load({"id": "test01"})
+bird = client.Bird().load({"id": "test01"})
+print(bird)
 ```
 
 ### PHP
 
 ```php
-$client = FreeBirdsSDK::test();
-$result = $client->bird()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = FreeBirdsSDK::test([
+    "entity" => ["bird" => ["test01" => ["id" => "test01"]]],
+]);
+$bird = $client->Bird()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -192,15 +200,18 @@ result, err := client.Bird(nil).Load(
 ### Ruby
 
 ```ruby
-client = FreeBirdsSDK.test
-result = client.bird.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = FreeBirdsSDK.test({
+  "entity" => { "bird" => { "test01" => { "id" => "test01" } } },
+})
+bird = client.Bird.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:bird():load({ id = "test01" })
+local result, err = client:Bird():load({ id = "test01" })
 ```
 
 ## How it works
@@ -248,6 +259,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

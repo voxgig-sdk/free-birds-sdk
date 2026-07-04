@@ -220,25 +220,15 @@ class FreeBirdsSDK:
         }
 
 
-    @property
-    def bird(self):
-        """Idiomatic facade: client.bird.list() / client.bird.load({"id": ...})."""
-        from entity.bird_entity import BirdEntity
-        cached = getattr(self, "_bird", None)
-        if cached is None:
-            cached = BirdEntity(self, None)
-            self._bird = cached
-        return cached
-
-    def Bird(self, data=None):
-        # Deprecated: use client.bird instead.
+    def Bird(self, data=None) -> "BirdEntity":
+        """Entity factory: client.Bird().list({}) / client.Bird().load({"id": ...})."""
         from entity.bird_entity import BirdEntity
         return BirdEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "FreeBirdsSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class FreeBirdsSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.bird_entity import BirdEntity

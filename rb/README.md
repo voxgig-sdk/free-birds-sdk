@@ -28,16 +28,14 @@ require_relative "FreeBirds_sdk"
 client = FreeBirdsSDK.new
 ```
 
-### 2. List birds
+### 2. List bird records
 
 ```ruby
 begin
-  result = client.bird.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Bird records — iterate directly.
+  birds = client.Bird.list
+  birds.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,8 +46,9 @@ end
 
 ```ruby
 begin
-  result = client.bird.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Bird record (raises on error).
+  bird = client.Bird.load({ "id" => "example_id" })
+  puts bird
 rescue => err
   warn "load failed: #{err}"
 end
@@ -96,13 +95,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = FreeBirdsSDK.test
+client = FreeBirdsSDK.test({
+  "entity" => { "bird" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.bird.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+bird = client.Bird.load({ "id" => "test01" })
+puts bird
 ```
 
 ### Use a custom fetch function
@@ -244,7 +247,7 @@ API path: `/birds`
 
 ### Bird
 
-Create an instance: `const bird = client.bird`
+Create an instance: `bird = client.Bird`
 
 #### Operations
 
@@ -271,14 +274,16 @@ Create an instance: `const bird = client.bird`
 
 #### Example: Load
 
-```ts
-const bird = await client.bird.load({ id: 'bird_id' })
+```ruby
+# load returns the bare Bird record (raises on error).
+bird = client.Bird.load({ "id" => "bird_id" })
 ```
 
 #### Example: List
 
-```ts
-const birds = await client.bird.list()
+```ruby
+# list returns an Array of Bird records (raises on error).
+birds = client.Bird.list
 ```
 
 
@@ -353,7 +358,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-bird = client.bird
+bird = client.Bird
 bird.load({ "id" => "example_id" })
 
 # bird.data_get now returns the loaded bird data
