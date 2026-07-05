@@ -65,8 +65,13 @@ class BirdEntity:
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch: BirdLoadMatch, ctrl=None) -> Bird:
+    def load(self, reqmatch=None, ctrl=None) -> Bird:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.Bird().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "load",
             "ctrl": ctrl,
@@ -87,8 +92,12 @@ class BirdEntity:
 
 
     
-    def list(self, reqmatch: BirdListMatch, ctrl=None) -> list[Bird]:
+    def list(self, reqmatch=None, ctrl=None) -> list[Bird]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.Bird().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

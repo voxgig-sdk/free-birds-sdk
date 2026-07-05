@@ -8,7 +8,7 @@ Complete API reference for the FreeBirds Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'free-birds_sdk'
+require_relative 'FreeBirds_sdk'
 
 client = FreeBirdsSDK.new(options)
 ```
@@ -93,26 +93,26 @@ bird = client.Bird
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `diet` | ``$STRING`` | No |  |
-| `family` | ``$STRING`` | No |  |
-| `habitat` | ``$STRING`` | No |  |
-| `height_cm` | ``$NUMBER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `place_of_found` | ``$STRING`` | No |  |
-| `species` | ``$STRING`` | No |  |
-| `weight_kg` | ``$NUMBER`` | No |  |
+| `description` | `String` | No |  |
+| `diet` | `String` | No |  |
+| `family` | `String` | No |  |
+| `habitat` | `String` | No |  |
+| `height_cm` | `Float` | No |  |
+| `id` | `Integer` | No |  |
+| `image` | `String` | No |  |
+| `name` | `String` | No |  |
+| `place_of_found` | `String` | No |  |
+| `species` | `String` | No |  |
+| `weight_kg` | `Float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Bird.list(nil)
+results = client.Bird.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`

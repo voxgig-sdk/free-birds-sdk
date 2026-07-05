@@ -8,7 +8,7 @@ Complete API reference for the FreeBirds Python SDK.
 ### Constructor
 
 ```python
-from free-birds_sdk import FreeBirdsSDK
+from freebirds_sdk import FreeBirdsSDK
 
 client = FreeBirdsSDK(options)
 ```
@@ -87,26 +87,26 @@ bird = client.Bird()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `diet` | ``$STRING`` | No |  |
-| `family` | ``$STRING`` | No |  |
-| `habitat` | ``$STRING`` | No |  |
-| `height_cm` | ``$NUMBER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `place_of_found` | ``$STRING`` | No |  |
-| `species` | ``$STRING`` | No |  |
-| `weight_kg` | ``$NUMBER`` | No |  |
+| `description` | `str` | No |  |
+| `diet` | `str` | No |  |
+| `family` | `str` | No |  |
+| `habitat` | `str` | No |  |
+| `height_cm` | `float` | No |  |
+| `id` | `int` | No |  |
+| `image` | `str` | No |  |
+| `name` | `str` | No |  |
+| `place_of_found` | `str` | No |  |
+| `species` | `str` | No |  |
+| `weight_kg` | `float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Bird().list({})
+results = client.Bird().list()
 for bird in results:
     print(bird)
 ```

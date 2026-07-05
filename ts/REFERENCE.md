@@ -116,17 +116,17 @@ const bird = client.Bird()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `diet` | ``$STRING`` | No |  |
-| `family` | ``$STRING`` | No |  |
-| `habitat` | ``$STRING`` | No |  |
-| `height_cm` | ``$NUMBER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `place_of_found` | ``$STRING`` | No |  |
-| `species` | ``$STRING`` | No |  |
-| `weight_kg` | ``$NUMBER`` | No |  |
+| `description` | `string` | No |  |
+| `diet` | `string` | No |  |
+| `family` | `string` | No |  |
+| `habitat` | `string` | No |  |
+| `height_cm` | `number` | No |  |
+| `id` | `number` | No |  |
+| `image` | `string` | No |  |
+| `name` | `string` | No |  |
+| `place_of_found` | `string` | No |  |
+| `species` | `string` | No |  |
+| `weight_kg` | `number` | No |  |
 
 ### Operations
 
@@ -143,7 +143,7 @@ const results = await client.Bird().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Bird().load({ id: 'bird_id' })
+const result = await client.Bird().load({ id: 1 })
 ```
 
 ### Common Methods

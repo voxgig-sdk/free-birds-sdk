@@ -221,7 +221,7 @@ class FreeBirdsSDK:
 
 
     def Bird(self, data=None) -> "BirdEntity":
-        """Entity factory: client.Bird().list({}) / client.Bird().load({"id": ...})."""
+        """Entity factory: client.Bird().list() / client.Bird().load({"id": ...})."""
         from entity.bird_entity import BirdEntity
         return BirdEntity(self, data)
 

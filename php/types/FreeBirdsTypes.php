@@ -34,7 +34,7 @@ class BirdLoadMatch
     public int $id;
 }
 
-/** Match filter for Bird#list (any subset of Bird fields). */
+/** Request payload for Bird#list. */
 class BirdListMatch
 {
     public ?string $description = null;

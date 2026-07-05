@@ -28,8 +28,7 @@ type BirdLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// BirdListMatch mirrors the bird fields as an all-optional match
-// filter (Go analog of Partial<Bird>).
+// BirdListMatch is the typed request payload for Bird.ListTyped.
 type BirdListMatch struct {
 	Description *string `json:"description,omitempty"`
 	Diet *string `json:"diet,omitempty"`

@@ -23,6 +23,17 @@
 ---@field id number
 
 ---@class BirdListMatch
+---@field description? string
+---@field diet? string
+---@field family? string
+---@field habitat? string
+---@field height_cm? number
+---@field id? number
+---@field image? string
+---@field name? string
+---@field place_of_found? string
+---@field species? string
+---@field weight_kg? number
 
 local M = {}
 

@@ -66,7 +66,7 @@ BirdLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Bird#list (any subset of Bird fields).
+# Request payload for Bird#list.
 #
 # @!attribute [rw] description
 #   @return [String, nil]

@@ -8,7 +8,7 @@ Complete API reference for the FreeBirds PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/free-birds_sdk.php';
+require_once __DIR__ . '/freebirds_sdk.php';
 
 $client = new FreeBirdsSDK($options);
 ```
@@ -45,11 +45,11 @@ $client = FreeBirdsSDK::test();
 
 Create a new `BirdEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): FreeBirdsUtility`
 
 Return a copy of the SDK utility object.
 
@@ -92,26 +92,26 @@ $bird = $client->Bird();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `diet` | ``$STRING`` | No |  |
-| `family` | ``$STRING`` | No |  |
-| `habitat` | ``$STRING`` | No |  |
-| `height_cm` | ``$NUMBER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `place_of_found` | ``$STRING`` | No |  |
-| `species` | ``$STRING`` | No |  |
-| `weight_kg` | ``$NUMBER`` | No |  |
+| `description` | `string` | No |  |
+| `diet` | `string` | No |  |
+| `family` | `string` | No |  |
+| `habitat` | `string` | No |  |
+| `height_cm` | `float` | No |  |
+| `id` | `int` | No |  |
+| `image` | `string` | No |  |
+| `name` | `string` | No |  |
+| `place_of_found` | `string` | No |  |
+| `species` | `string` | No |  |
+| `weight_kg` | `float` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Bird()->list([]);
+$results = $client->Bird()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -124,19 +124,19 @@ $result = $client->Bird()->load(["id" => "bird_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -145,7 +145,7 @@ Set the entity match criteria.
 Create a new `BirdEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

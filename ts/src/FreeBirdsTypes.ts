@@ -23,5 +23,17 @@ export interface BirdLoadMatch {
   id: number
 }
 
-export type BirdListMatch = Partial<Bird>
+export interface BirdListMatch {
+  description?: string
+  diet?: string
+  family?: string
+  habitat?: string
+  height_cm?: number
+  id?: number
+  image?: string
+  name?: string
+  place_of_found?: string
+  species?: string
+  weight_kg?: number
+}
 
