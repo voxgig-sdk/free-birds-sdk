@@ -116,7 +116,7 @@ for bird in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Bird().load({"id": "bird_id"})
+result = client.Bird().load({"id": 1})
 ```
 
 ### Common Methods

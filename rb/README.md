@@ -49,7 +49,7 @@ end
 ```ruby
 begin
   # load returns the bare Bird record (raises on error).
-  bird = client.Bird.load({ "id" => "example_id" })
+  bird = client.Bird.load({ "id" => 1 })
   puts bird
 rescue => err
   warn "load failed: #{err}"
@@ -304,7 +304,7 @@ Create an instance: `bird = client.Bird`
 
 ```ruby
 # load returns the bare Bird record (raises on error).
-bird = client.Bird.load({ "id" => "bird_id" })
+bird = client.Bird.load({ "id" => 1 })
 ```
 
 #### Example: List

@@ -50,7 +50,7 @@ try {
 ```php
 try {
     // load() returns the bare Bird record (throws on error).
-    $bird = $client->Bird()->load(["id" => "example_id"]);
+    $bird = $client->Bird()->load(["id" => 1]);
     print_r($bird);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -314,7 +314,7 @@ Create an instance: `$bird = $client->Bird();`
 
 ```php
 // load() returns the bare Bird record (throws on error).
-$bird = $client->Bird()->load(["id" => "bird_id"]);
+$bird = $client->Bird()->load(["id" => 1]);
 ```
 
 #### Example: List

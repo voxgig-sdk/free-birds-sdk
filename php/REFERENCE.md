@@ -119,7 +119,7 @@ $results = $client->Bird()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Bird()->load(["id" => "bird_id"]);
+$result = $client->Bird()->load(["id" => 1]);
 ```
 
 ### Common Methods

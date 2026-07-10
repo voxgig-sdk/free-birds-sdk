@@ -15,9 +15,9 @@ main: {
           url: "https://freetestapi.com/api/v1"
         }
       ]
+      summary: "The Free Birds API offers accessible endpoints to retrieve and manage various bird data ideal for development purposes."
       title: "Free Birds API"
       version: "1.0.0"
+      website: "https://freetestapi.com"
     }
   }
-}
-

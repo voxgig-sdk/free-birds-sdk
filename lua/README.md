@@ -50,7 +50,7 @@ end
 ### 3. Load a bird
 
 ```lua
-local bird, err = client:Bird():load({ id = "example_id" })
+local bird, err = client:Bird():load({ id = 1 })
 if err then error(err) end
 print(bird)
 ```
@@ -292,7 +292,7 @@ Create an instance: `local bird = client:Bird(nil)`
 #### Example: Load
 
 ```lua
-local bird, err = client:Bird():load({ id = "bird_id" })
+local bird, err = client:Bird():load({ id = 1 })
 ```
 
 #### Example: List

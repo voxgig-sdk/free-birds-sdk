@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -366,14 +363,17 @@
           "url": "https://freetestapi.com/apis/birds"
         },
         "description": "The Free Birds API offers accessible endpoints to retrieve and manage various bird data ideal for development purposes. It supports multiple features including searching, sorting, and limiting results, making it a versatile tool for testing and integration in applications.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://freetestapi.com/api/v1"
           }
         ],
+        "summary": "The Free Birds API offers accessible endpoints to retrieve and manage various bird data ideal for development purposes.",
         "title": "Free Birds API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://freetestapi.com"
       },
       "option": {},
       "target": {
@@ -426,6 +426,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -476,6 +479,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

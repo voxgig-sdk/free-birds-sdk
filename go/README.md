@@ -320,7 +320,7 @@ Create an instance: `bird := client.Bird(nil)`
 #### Example: Load
 
 ```go
-bird, err := client.Bird(nil).Load(map[string]any{"id": "bird_id"}, nil)
+bird, err := client.Bird(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
