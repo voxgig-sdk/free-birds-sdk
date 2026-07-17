@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- FreeBirds SDK exists test
 
 local sdk = require("free-birds_sdk")
 
