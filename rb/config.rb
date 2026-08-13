@@ -158,6 +158,7 @@ module FreeBirdsConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/birds",
                   "parts" => [
@@ -200,6 +201,7 @@ module FreeBirdsConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/birds/{id}",
                   "parts" => [

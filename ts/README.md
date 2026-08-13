@@ -35,7 +35,9 @@ const client = new FreeBirdsSDK()
 
 ### 2. List bird records
 
-`list()` resolves to an array of Bird objects — iterate it directly:
+`list()` resolves to an array of Bird ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const birds = await client.Bird().list()
@@ -133,7 +135,8 @@ Create a mock client for unit testing — no server required:
 const client = FreeBirdsSDK.test()
 
 const bird = await client.Bird().list()
-// bird is a bare entity populated with mock response data
+// bird is the entity, populated with mock response data
+// — call bird.data() for the record itself
 console.log(bird)
 ```
 

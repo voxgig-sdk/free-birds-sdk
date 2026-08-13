@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import FreeBirdsControl
-from core.error import FreeBirdsError
-from core.result import FreeBirdsResult
-from core.spec import FreeBirdsSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import FreeBirdsControl
+from projectname_sdk.core.error import FreeBirdsError
+from projectname_sdk.core.result import FreeBirdsResult
+from projectname_sdk.core.spec import FreeBirdsSpec
 
 
 # True when this SDK was generated with the named feature.

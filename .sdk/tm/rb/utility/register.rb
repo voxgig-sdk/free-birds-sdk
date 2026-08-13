@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ FreeBirdsUtility.registrar = ->(u) {
   u.prepare_params = FreeBirdsUtilities::PrepareParams
   u.prepare_path = FreeBirdsUtilities::PreparePath
   u.prepare_query = FreeBirdsUtilities::PrepareQuery
+  u.graphql_body = FreeBirdsUtilities::GraphqlBody
+  u.graphql_errors = FreeBirdsUtilities::GraphqlErrors
   u.result_basic = FreeBirdsUtilities::ResultBasic
   u.result_body = FreeBirdsUtilities::ResultBody
   u.result_headers = FreeBirdsUtilities::ResultHeaders

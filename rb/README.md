@@ -48,7 +48,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare Bird record (raises on error).
+  # load returns the ENTITY — call data_get for the Bird record (raises on error).
   bird = client.Bird.load({ "id" => 1 })
   puts bird
 rescue => err
@@ -134,7 +134,8 @@ client = FreeBirdsSDK.test({
   "entity" => { "bird" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 bird = client.Bird.list()
 puts bird
 ```
@@ -303,7 +304,7 @@ Create an instance: `bird = client.Bird`
 #### Example: Load
 
 ```ruby
-# load returns the bare Bird record (raises on error).
+# load returns the ENTITY — call data_get for the Bird record (raises on error).
 bird = client.Bird.load({ "id" => 1 })
 ```
 

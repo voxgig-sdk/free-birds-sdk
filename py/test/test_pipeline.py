@@ -16,11 +16,11 @@
 import pytest
 
 from freebirds_sdk import FreeBirdsSDK
-from core.error import FreeBirdsError
-from core.result import FreeBirdsResult
-from core.response import FreeBirdsResponse
-from core.spec import FreeBirdsSpec
-from feature.base_feature import FreeBirdsBaseFeature
+from freebirds_sdk.core.error import FreeBirdsError
+from freebirds_sdk.core.result import FreeBirdsResult
+from freebirds_sdk.core.response import FreeBirdsResponse
+from freebirds_sdk.core.spec import FreeBirdsSpec
+from freebirds_sdk.feature.base_feature import FreeBirdsBaseFeature
 
 
 def _client():

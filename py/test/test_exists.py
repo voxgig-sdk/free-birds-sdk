@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# FreeBirds SDK exists test
 
 import pytest
 from freebirds_sdk import FreeBirdsSDK

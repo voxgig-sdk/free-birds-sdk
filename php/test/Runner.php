@@ -43,8 +43,8 @@ class FreeBirdsTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('FREEBIRDS_TEST_LIVE');
-        $override = self::getenv('FREEBIRDS_TEST_OVERRIDE');
+        $live = self::getenv('FREE_BIRDS_TEST_LIVE');
+        $override = self::getenv('FREE_BIRDS_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class FreeBirdsTestRunner
             }
         }
 
-        $explain = self::getenv('FREEBIRDS_TEST_EXPLAIN');
+        $explain = self::getenv('FREE_BIRDS_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['FREEBIRDS_TEST_EXPLAIN'] = $explain;
+            $m['FREE_BIRDS_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

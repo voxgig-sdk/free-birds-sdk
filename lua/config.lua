@@ -157,6 +157,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/birds",
                 ["parts"] = {
@@ -199,6 +200,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/birds/{id}",
                 ["parts"] = {

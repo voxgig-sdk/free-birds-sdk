@@ -26,8 +26,8 @@ import {
 describe('BirdEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when FREEBIRDS_TEST_LIVE=TRUE.
-  afterEach(liveDelay('FREEBIRDS_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when FREE_BIRDS_TEST_LIVE=TRUE.
+  afterEach(liveDelay('FREE_BIRDS_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = FreeBirdsSDK.test()
@@ -63,13 +63,13 @@ describe('BirdEntity', async () => {
     const bird_ref01_ent = client.Bird()
     const bird_ref01_match: any = {}
 
-    const bird_ref01_list = await bird_ref01_ent.list(bird_ref01_match)
+    const bird_ref01_list = (await bird_ref01_ent.list(bird_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const bird_ref01_match_dt0: any = {}
     bird_ref01_match_dt0.id = bird_ref01_data.id
-    const bird_ref01_data_dt0 = await bird_ref01_ent.load(bird_ref01_match_dt0)
+    const bird_ref01_data_dt0 = (await bird_ref01_ent.load(bird_ref01_match_dt0)).data()
     assert(bird_ref01_data_dt0.id === bird_ref01_data.id)
 
 

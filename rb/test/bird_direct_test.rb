@@ -114,11 +114,11 @@ def bird_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "FREEBIRDS_TEST_BIRD_ENTID" => {},
-    "FREEBIRDS_TEST_LIVE" => "FALSE",
+    "FREE_BIRDS_TEST_BIRD_ENTID" => {},
+    "FREE_BIRDS_TEST_LIVE" => "FALSE",
   })
 
-  live = env["FREEBIRDS_TEST_LIVE"] == "TRUE"
+  live = env["FREE_BIRDS_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

@@ -23,8 +23,8 @@ module FreeBirdsTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("FREEBIRDS_TEST_LIVE")
-    override = getenv("FREEBIRDS_TEST_OVERRIDE")
+    live = getenv("FREE_BIRDS_TEST_LIVE")
+    override = getenv("FREE_BIRDS_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module FreeBirdsTestRunner
       end
     end
 
-    explain = getenv("FREEBIRDS_TEST_EXPLAIN")
-    m["FREEBIRDS_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("FREE_BIRDS_TEST_EXPLAIN")
+    m["FREE_BIRDS_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from freebirds_sdk.utility.voxgig_struct import voxgig_struct as vs
 from freebirds_sdk import FreeBirdsSDK
-from core import helpers
+from freebirds_sdk.core import helpers
 from test import runner
 
 
@@ -105,11 +105,11 @@ def _bird_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "FREEBIRDS_TEST_BIRD_ENTID": {},
-        "FREEBIRDS_TEST_LIVE": "FALSE",
+        "FREE_BIRDS_TEST_BIRD_ENTID": {},
+        "FREE_BIRDS_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("FREEBIRDS_TEST_LIVE") == "TRUE"
+    live = env.get("FREE_BIRDS_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
