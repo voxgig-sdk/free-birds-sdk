@@ -40,7 +40,7 @@ class FreeBirdsSDK
         $utility = new FreeBirdsUtility();
         $this->_utility = $utility;
 
-        $config = FreeBirdsConfig::make_config();
+        $config = FreeBirdsConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

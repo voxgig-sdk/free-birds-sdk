@@ -15,7 +15,7 @@ require_relative "../FreeBirds_sdk"
 module FreeBirdsFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = FreeBirdsConfig.make_config["feature"]
+    f = FreeBirdsConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

@@ -28,7 +28,7 @@ class FreeBirdsSDK
     utility = FreeBirdsUtility.new
     @_utility = utility
 
-    config = FreeBirdsConfig.make_config
+    config = FreeBirdsConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
