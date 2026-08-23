@@ -8,56 +8,67 @@ main: kit: entity: bird: {
     {
       name: "description"
       req: false
+      short: "Detailed description of the bird"
       type: "`$STRING`"
     }
     {
       name: "diet"
       req: false
+      short: "Primary diet of the bird"
       type: "`$STRING`"
     }
     {
       name: "family"
       req: false
+      short: "Bird family classification"
       type: "`$STRING`"
     }
     {
       name: "habitat"
       req: false
+      short: "Primary habitat of the bird"
       type: "`$STRING`"
     }
     {
       name: "height_cm"
       req: false
+      short: "Average height in centimeters"
       type: "`$NUMBER`"
     }
     {
       name: "id"
       req: false
+      short: "Unique identifier for the bird"
       type: "`$INTEGER`"
     }
     {
       name: "image"
       req: false
+      short: "URL to an image of the bird"
       type: "`$STRING`"
     }
     {
       name: "name"
       req: false
+      short: "Common name of the bird"
       type: "`$STRING`"
     }
     {
       name: "place_of_found"
       req: false
+      short: "Geographic location where the bird is commonly found"
       type: "`$STRING`"
     }
     {
       name: "species"
       req: false
+      short: "Scientific species name"
       type: "`$STRING`"
     }
     {
       name: "weight_kg"
       req: false
+      short: "Average weight in kilograms"
       type: "`$NUMBER`"
     }
   ]

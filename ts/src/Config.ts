@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'FreeBirds',
+        slug: "free-birds",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -56,46 +67,57 @@ class Config {
       "fields": [
         {
           "name": "description",
+          "short": "Detailed description of the bird",
           "type": "`$STRING`"
         },
         {
           "name": "diet",
+          "short": "Primary diet of the bird",
           "type": "`$STRING`"
         },
         {
           "name": "family",
+          "short": "Bird family classification",
           "type": "`$STRING`"
         },
         {
           "name": "habitat",
+          "short": "Primary habitat of the bird",
           "type": "`$STRING`"
         },
         {
           "name": "height_cm",
+          "short": "Average height in centimeters",
           "type": "`$NUMBER`"
         },
         {
           "name": "id",
+          "short": "Unique identifier for the bird",
           "type": "`$INTEGER`"
         },
         {
           "name": "image",
+          "short": "URL to an image of the bird",
           "type": "`$STRING`"
         },
         {
           "name": "name",
+          "short": "Common name of the bird",
           "type": "`$STRING`"
         },
         {
           "name": "place_of_found",
+          "short": "Geographic location where the bird is commonly found",
           "type": "`$STRING`"
         },
         {
           "name": "species",
+          "short": "Scientific species name",
           "type": "`$STRING`"
         },
         {
           "name": "weight_kg",
+          "short": "Average weight in kilograms",
           "type": "`$NUMBER`"
         }
       ],

@@ -253,17 +253,17 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `diet` |  |
-| `family` |  |
-| `habitat` |  |
-| `height_cm` |  |
-| `id` |  |
-| `image` |  |
-| `name` |  |
-| `place_of_found` |  |
-| `species` |  |
-| `weight_kg` |  |
+| `description` | Detailed description of the bird |
+| `diet` | Primary diet of the bird |
+| `family` | Bird family classification |
+| `habitat` | Primary habitat of the bird |
+| `height_cm` | Average height in centimeters |
+| `id` | Unique identifier for the bird |
+| `image` | URL to an image of the bird |
+| `name` | Common name of the bird |
+| `place_of_found` | Geographic location where the bird is commonly found |
+| `species` | Scientific species name |
+| `weight_kg` | Average weight in kilograms |
 
 Operations: List, Load.
 
@@ -289,17 +289,17 @@ Create an instance: `bird = client.Bird`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `String` |  |
-| `diet` | `String` |  |
-| `family` | `String` |  |
-| `habitat` | `String` |  |
-| `height_cm` | `Float` |  |
-| `id` | `Integer` |  |
-| `image` | `String` |  |
-| `name` | `String` |  |
-| `place_of_found` | `String` |  |
-| `species` | `String` |  |
-| `weight_kg` | `Float` |  |
+| `description` | `String` | Detailed description of the bird |
+| `diet` | `String` | Primary diet of the bird |
+| `family` | `String` | Bird family classification |
+| `habitat` | `String` | Primary habitat of the bird |
+| `height_cm` | `Float` | Average height in centimeters |
+| `id` | `Integer` | Unique identifier for the bird |
+| `image` | `String` | URL to an image of the bird |
+| `name` | `String` | Common name of the bird |
+| `place_of_found` | `String` | Geographic location where the bird is commonly found |
+| `species` | `String` | Scientific species name |
+| `weight_kg` | `Float` | Average weight in kilograms |
 
 #### Example: Load
 

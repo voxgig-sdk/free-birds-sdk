@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "FreeBirds",
+			"slug": "free-birds",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -33,46 +36,57 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "description",
+						"short": "Detailed description of the bird",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "diet",
+						"short": "Primary diet of the bird",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "family",
+						"short": "Bird family classification",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "habitat",
+						"short": "Primary habitat of the bird",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "height_cm",
+						"short": "Average height in centimeters",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the bird",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "image",
+						"short": "URL to an image of the bird",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Common name of the bird",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "place_of_found",
+						"short": "Geographic location where the bird is commonly found",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "species",
+						"short": "Scientific species name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "weight_kg",
+						"short": "Average weight in kilograms",
 						"type": "`$NUMBER`",
 					},
 				},

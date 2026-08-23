@@ -87,17 +87,17 @@ bird = client.Bird()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `str` | No |  |
-| `diet` | `str` | No |  |
-| `family` | `str` | No |  |
-| `habitat` | `str` | No |  |
-| `height_cm` | `float` | No |  |
-| `id` | `int` | No |  |
-| `image` | `str` | No |  |
-| `name` | `str` | No |  |
-| `place_of_found` | `str` | No |  |
-| `species` | `str` | No |  |
-| `weight_kg` | `float` | No |  |
+| `description` | `str` | No | Detailed description of the bird |
+| `diet` | `str` | No | Primary diet of the bird |
+| `family` | `str` | No | Bird family classification |
+| `habitat` | `str` | No | Primary habitat of the bird |
+| `height_cm` | `float` | No | Average height in centimeters |
+| `id` | `int` | No | Unique identifier for the bird |
+| `image` | `str` | No | URL to an image of the bird |
+| `name` | `str` | No | Common name of the bird |
+| `place_of_found` | `str` | No | Geographic location where the bird is commonly found |
+| `species` | `str` | No | Scientific species name |
+| `weight_kg` | `float` | No | Average weight in kilograms |
 
 ### Operations
 

@@ -6,7 +6,7 @@ The Golang SDK for the FreeBirds API — an entity-oriented client using standar
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Bird(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -269,17 +269,17 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"description"` |  |
-| `"diet"` |  |
-| `"family"` |  |
-| `"habitat"` |  |
-| `"height_cm"` |  |
-| `"id"` |  |
-| `"image"` |  |
-| `"name"` |  |
-| `"place_of_found"` |  |
-| `"species"` |  |
-| `"weight_kg"` |  |
+| `"description"` | Detailed description of the bird |
+| `"diet"` | Primary diet of the bird |
+| `"family"` | Bird family classification |
+| `"habitat"` | Primary habitat of the bird |
+| `"height_cm"` | Average height in centimeters |
+| `"id"` | Unique identifier for the bird |
+| `"image"` | URL to an image of the bird |
+| `"name"` | Common name of the bird |
+| `"place_of_found"` | Geographic location where the bird is commonly found |
+| `"species"` | Scientific species name |
+| `"weight_kg"` | Average weight in kilograms |
 
 Operations: List, Load.
 
@@ -305,17 +305,17 @@ Create an instance: `bird := client.Bird(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `diet` | `string` |  |
-| `family` | `string` |  |
-| `habitat` | `string` |  |
-| `height_cm` | `float64` |  |
-| `id` | `int` |  |
-| `image` | `string` |  |
-| `name` | `string` |  |
-| `place_of_found` | `string` |  |
-| `species` | `string` |  |
-| `weight_kg` | `float64` |  |
+| `description` | `string` | Detailed description of the bird |
+| `diet` | `string` | Primary diet of the bird |
+| `family` | `string` | Bird family classification |
+| `habitat` | `string` | Primary habitat of the bird |
+| `height_cm` | `float64` | Average height in centimeters |
+| `id` | `int` | Unique identifier for the bird |
+| `image` | `string` | URL to an image of the bird |
+| `name` | `string` | Common name of the bird |
+| `place_of_found` | `string` | Geographic location where the bird is commonly found |
+| `species` | `string` | Scientific species name |
+| `weight_kg` | `float64` | Average weight in kilograms |
 
 #### Example: Load
 

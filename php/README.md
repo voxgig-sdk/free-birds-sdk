@@ -263,17 +263,17 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `diet` |  |
-| `family` |  |
-| `habitat` |  |
-| `height_cm` |  |
-| `id` |  |
-| `image` |  |
-| `name` |  |
-| `place_of_found` |  |
-| `species` |  |
-| `weight_kg` |  |
+| `description` | Detailed description of the bird |
+| `diet` | Primary diet of the bird |
+| `family` | Bird family classification |
+| `habitat` | Primary habitat of the bird |
+| `height_cm` | Average height in centimeters |
+| `id` | Unique identifier for the bird |
+| `image` | URL to an image of the bird |
+| `name` | Common name of the bird |
+| `place_of_found` | Geographic location where the bird is commonly found |
+| `species` | Scientific species name |
+| `weight_kg` | Average weight in kilograms |
 
 Operations: List, Load.
 
@@ -299,17 +299,17 @@ Create an instance: `$bird = $client->Bird();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `diet` | `string` |  |
-| `family` | `string` |  |
-| `habitat` | `string` |  |
-| `height_cm` | `float` |  |
-| `id` | `int` |  |
-| `image` | `string` |  |
-| `name` | `string` |  |
-| `place_of_found` | `string` |  |
-| `species` | `string` |  |
-| `weight_kg` | `float` |  |
+| `description` | `string` | Detailed description of the bird |
+| `diet` | `string` | Primary diet of the bird |
+| `family` | `string` | Bird family classification |
+| `habitat` | `string` | Primary habitat of the bird |
+| `height_cm` | `float` | Average height in centimeters |
+| `id` | `int` | Unique identifier for the bird |
+| `image` | `string` | URL to an image of the bird |
+| `name` | `string` | Common name of the bird |
+| `place_of_found` | `string` | Geographic location where the bird is commonly found |
+| `species` | `string` | Scientific species name |
+| `weight_kg` | `float` | Average weight in kilograms |
 
 #### Example: Load
 

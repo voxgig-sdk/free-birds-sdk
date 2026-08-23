@@ -241,17 +241,17 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `diet` |  |
-| `family` |  |
-| `habitat` |  |
-| `height_cm` |  |
-| `id` |  |
-| `image` |  |
-| `name` |  |
-| `place_of_found` |  |
-| `species` |  |
-| `weight_kg` |  |
+| `description` | Detailed description of the bird |
+| `diet` | Primary diet of the bird |
+| `family` | Bird family classification |
+| `habitat` | Primary habitat of the bird |
+| `height_cm` | Average height in centimeters |
+| `id` | Unique identifier for the bird |
+| `image` | URL to an image of the bird |
+| `name` | Common name of the bird |
+| `place_of_found` | Geographic location where the bird is commonly found |
+| `species` | Scientific species name |
+| `weight_kg` | Average weight in kilograms |
 
 Operations: List, Load.
 
@@ -277,17 +277,17 @@ Create an instance: `local bird = client:Bird(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `diet` | `string` |  |
-| `family` | `string` |  |
-| `habitat` | `string` |  |
-| `height_cm` | `number` |  |
-| `id` | `number` |  |
-| `image` | `string` |  |
-| `name` | `string` |  |
-| `place_of_found` | `string` |  |
-| `species` | `string` |  |
-| `weight_kg` | `number` |  |
+| `description` | `string` | Detailed description of the bird |
+| `diet` | `string` | Primary diet of the bird |
+| `family` | `string` | Bird family classification |
+| `habitat` | `string` | Primary habitat of the bird |
+| `height_cm` | `number` | Average height in centimeters |
+| `id` | `number` | Unique identifier for the bird |
+| `image` | `string` | URL to an image of the bird |
+| `name` | `string` | Common name of the bird |
+| `place_of_found` | `string` | Geographic location where the bird is commonly found |
+| `species` | `string` | Scientific species name |
+| `weight_kg` | `number` | Average weight in kilograms |
 
 #### Example: Load
 

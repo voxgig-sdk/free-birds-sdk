@@ -256,17 +256,17 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `diet` |  |
-| `family` |  |
-| `habitat` |  |
-| `height_cm` |  |
-| `id` |  |
-| `image` |  |
-| `name` |  |
-| `place_of_found` |  |
-| `species` |  |
-| `weight_kg` |  |
+| `description` | Detailed description of the bird |
+| `diet` | Primary diet of the bird |
+| `family` | Bird family classification |
+| `habitat` | Primary habitat of the bird |
+| `height_cm` | Average height in centimeters |
+| `id` | Unique identifier for the bird |
+| `image` | URL to an image of the bird |
+| `name` | Common name of the bird |
+| `place_of_found` | Geographic location where the bird is commonly found |
+| `species` | Scientific species name |
+| `weight_kg` | Average weight in kilograms |
 
 Operations: List, Load.
 
@@ -292,17 +292,17 @@ Create an instance: `bird = client.Bird()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `str` |  |
-| `diet` | `str` |  |
-| `family` | `str` |  |
-| `habitat` | `str` |  |
-| `height_cm` | `float` |  |
-| `id` | `int` |  |
-| `image` | `str` |  |
-| `name` | `str` |  |
-| `place_of_found` | `str` |  |
-| `species` | `str` |  |
-| `weight_kg` | `float` |  |
+| `description` | `str` | Detailed description of the bird |
+| `diet` | `str` | Primary diet of the bird |
+| `family` | `str` | Bird family classification |
+| `habitat` | `str` | Primary habitat of the bird |
+| `height_cm` | `float` | Average height in centimeters |
+| `id` | `int` | Unique identifier for the bird |
+| `image` | `str` | URL to an image of the bird |
+| `name` | `str` | Common name of the bird |
+| `place_of_found` | `str` | Geographic location where the bird is commonly found |
+| `species` | `str` | Scientific species name |
+| `weight_kg` | `float` | Average weight in kilograms |
 
 #### Example: Load
 

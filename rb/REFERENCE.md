@@ -93,17 +93,17 @@ bird = client.Bird
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `String` | No |  |
-| `diet` | `String` | No |  |
-| `family` | `String` | No |  |
-| `habitat` | `String` | No |  |
-| `height_cm` | `Float` | No |  |
-| `id` | `Integer` | No |  |
-| `image` | `String` | No |  |
-| `name` | `String` | No |  |
-| `place_of_found` | `String` | No |  |
-| `species` | `String` | No |  |
-| `weight_kg` | `Float` | No |  |
+| `description` | `String` | No | Detailed description of the bird |
+| `diet` | `String` | No | Primary diet of the bird |
+| `family` | `String` | No | Bird family classification |
+| `habitat` | `String` | No | Primary habitat of the bird |
+| `height_cm` | `Float` | No | Average height in centimeters |
+| `id` | `Integer` | No | Unique identifier for the bird |
+| `image` | `String` | No | URL to an image of the bird |
+| `name` | `String` | No | Common name of the bird |
+| `place_of_found` | `String` | No | Geographic location where the bird is commonly found |
+| `species` | `String` | No | Scientific species name |
+| `weight_kg` | `Float` | No | Average weight in kilograms |
 
 ### Operations
 

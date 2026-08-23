@@ -90,17 +90,17 @@ local bird = client:Bird(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `diet` | `string` | No |  |
-| `family` | `string` | No |  |
-| `habitat` | `string` | No |  |
-| `height_cm` | `number` | No |  |
-| `id` | `number` | No |  |
-| `image` | `string` | No |  |
-| `name` | `string` | No |  |
-| `place_of_found` | `string` | No |  |
-| `species` | `string` | No |  |
-| `weight_kg` | `number` | No |  |
+| `description` | `string` | No | Detailed description of the bird |
+| `diet` | `string` | No | Primary diet of the bird |
+| `family` | `string` | No | Bird family classification |
+| `habitat` | `string` | No | Primary habitat of the bird |
+| `height_cm` | `number` | No | Average height in centimeters |
+| `id` | `number` | No | Unique identifier for the bird |
+| `image` | `string` | No | URL to an image of the bird |
+| `name` | `string` | No | Common name of the bird |
+| `place_of_found` | `string` | No | Geographic location where the bird is commonly found |
+| `species` | `string` | No | Scientific species name |
+| `weight_kg` | `number` | No | Average weight in kilograms |
 
 ### Operations
 
