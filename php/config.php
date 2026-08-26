@@ -42,6 +42,7 @@ class FreeBirdsConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [

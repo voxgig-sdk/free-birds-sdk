@@ -28,6 +28,7 @@ module FreeBirdsConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
