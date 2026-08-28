@@ -37,16 +37,10 @@ class BirdLoadMatch
 /** Request payload for Bird#list. */
 class BirdListMatch
 {
-    public ?string $description = null;
-    public ?string $diet = null;
-    public ?string $family = null;
-    public ?string $habitat = null;
-    public ?float $height_cm = null;
-    public ?int $id = null;
-    public ?string $image = null;
-    public ?string $name = null;
-    public ?string $place_of_found = null;
-    public ?string $species = null;
-    public ?float $weight_kg = null;
+    public ?int $limit = null;
+    public ?string $order = null;
+    public ?int $page = null;
+    public ?string $search = null;
+    public ?string $sort = null;
 }
 

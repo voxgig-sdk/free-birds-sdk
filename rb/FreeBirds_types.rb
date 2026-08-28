@@ -68,50 +68,26 @@ BirdLoadMatch = Struct.new(
 
 # Request payload for Bird#list.
 #
-# @!attribute [rw] description
-#   @return [String, nil]
-#
-# @!attribute [rw] diet
-#   @return [String, nil]
-#
-# @!attribute [rw] family
-#   @return [String, nil]
-#
-# @!attribute [rw] habitat
-#   @return [String, nil]
-#
-# @!attribute [rw] height_cm
-#   @return [Float, nil]
-#
-# @!attribute [rw] id
+# @!attribute [rw] limit
 #   @return [Integer, nil]
 #
-# @!attribute [rw] image
+# @!attribute [rw] order
 #   @return [String, nil]
 #
-# @!attribute [rw] name
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] search
 #   @return [String, nil]
 #
-# @!attribute [rw] place_of_found
+# @!attribute [rw] sort
 #   @return [String, nil]
-#
-# @!attribute [rw] species
-#   @return [String, nil]
-#
-# @!attribute [rw] weight_kg
-#   @return [Float, nil]
 BirdListMatch = Struct.new(
-  :description,
-  :diet,
-  :family,
-  :habitat,
-  :height_cm,
-  :id,
-  :image,
-  :name,
-  :place_of_found,
-  :species,
-  :weight_kg,
+  :limit,
+  :order,
+  :page,
+  :search,
+  :sort,
   keyword_init: true
 )
 

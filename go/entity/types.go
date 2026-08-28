@@ -34,17 +34,11 @@ type BirdLoadMatch struct {
 
 // BirdListMatch is the typed request payload for Bird.ListTyped.
 type BirdListMatch struct {
-	Description *string `json:"description,omitempty"`
-	Diet *string `json:"diet,omitempty"`
-	Family *string `json:"family,omitempty"`
-	Habitat *string `json:"habitat,omitempty"`
-	HeightCm *float64 `json:"height_cm,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Image *string `json:"image,omitempty"`
-	Name *string `json:"name,omitempty"`
-	PlaceOfFound *string `json:"place_of_found,omitempty"`
-	Species *string `json:"species,omitempty"`
-	WeightKg *float64 `json:"weight_kg,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Order *string `json:"order,omitempty"`
+	Page *int `json:"page,omitempty"`
+	Search *string `json:"search,omitempty"`
+	Sort *string `json:"sort,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

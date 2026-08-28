@@ -35,14 +35,8 @@ class BirdLoadMatch(TypedDict):
 
 
 class BirdListMatch(TypedDict, total=False):
-    description: str
-    diet: str
-    family: str
-    habitat: str
-    height_cm: float
-    id: int
-    image: str
-    name: str
-    place_of_found: str
-    species: str
-    weight_kg: float
+    limit: int
+    order: str
+    page: int
+    search: str
+    sort: str
