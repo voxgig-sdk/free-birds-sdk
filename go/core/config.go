@@ -56,16 +56,19 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "height_cm",
 						"short": "Average height in centimeters",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
+						"format": "int64",
 						"name": "id",
 						"short": "Unique identifier for the bird",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "image",
 						"short": "URL to an image of the bird",
 						"type": "`$STRING`",
@@ -86,10 +89,15 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "weight_kg",
 						"short": "Average weight in kilograms",
 						"type": "`$NUMBER`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "bird",
 				"op": map[string]any{
@@ -138,8 +146,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/birds",
-								"parts": []any{
-									"birds",
+								"segments": []any{
+									map[string]any{
+										"lit": "birds",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -153,6 +163,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"birds",
 								},
 							},
 						},
@@ -176,9 +189,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/birds/{id}",
-								"parts": []any{
-									"birds",
-									"{id}",
+								"segments": []any{
+									map[string]any{
+										"lit": "birds",
+									},
+									map[string]any{
+										"var": "id",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -188,6 +205,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"birds",
+									"{id}",
 								},
 							},
 						},
@@ -199,6 +220,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

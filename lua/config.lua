@@ -52,16 +52,19 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "float",
             ["name"] = "height_cm",
             ["short"] = "Average height in centimeters",
             ["type"] = "`$NUMBER`",
           },
           {
+            ["format"] = "int64",
             ["name"] = "id",
             ["short"] = "Unique identifier for the bird",
             ["type"] = "`$INTEGER`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "image",
             ["short"] = "URL to an image of the bird",
             ["type"] = "`$STRING`",
@@ -82,10 +85,15 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "float",
             ["name"] = "weight_kg",
             ["short"] = "Average weight in kilograms",
             ["type"] = "`$NUMBER`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "bird",
         ["op"] = {
@@ -134,8 +142,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/birds",
-                ["parts"] = {
-                  "birds",
+                ["segments"] = {
+                  {
+                    ["lit"] = "birds",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -149,6 +159,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "birds",
                 },
               },
             },
@@ -172,9 +185,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/birds/{id}",
-                ["parts"] = {
-                  "birds",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "birds",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -184,6 +201,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "birds",
+                  "{id}",
                 },
               },
             },

@@ -30,18 +30,21 @@ main: kit: entity: bird: {
       type: "`$STRING`"
     }
     {
+      format: "float"
       name: "height_cm"
       req: false
       short: "Average height in centimeters"
       type: "`$NUMBER`"
     }
     {
+      format: "int64"
       name: "id"
       req: false
       short: "Unique identifier for the bird"
       type: "`$INTEGER`"
     }
     {
+      format: "uri"
       name: "image"
       req: false
       short: "URL to an image of the bird"
@@ -66,6 +69,7 @@ main: kit: entity: bird: {
       type: "`$STRING`"
     }
     {
+      format: "float"
       name: "weight_kg"
       req: false
       short: "Average weight in kilograms"
@@ -128,8 +132,10 @@ main: kit: entity: bird: {
           }
           method: "GET"
           orig: "/birds"
-          parts: [
-            "birds"
+          segments: [
+            {
+              lit: "birds"
+            }
           ]
           select: {
             exist: [
@@ -164,9 +170,13 @@ main: kit: entity: bird: {
           }
           method: "GET"
           orig: "/birds/{id}"
-          parts: [
-            "birds"
-            "{id}"
+          segments: [
+            {
+              lit: "birds"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

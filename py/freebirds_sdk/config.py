@@ -1,6 +1,14 @@
 # FreeBirds SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -73,16 +81,19 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "float",
             "name": "height_cm",
             "short": "Average height in centimeters",
             "type": "`$NUMBER`",
           },
           {
+            "format": "int64",
             "name": "id",
             "short": "Unique identifier for the bird",
             "type": "`$INTEGER`",
           },
           {
+            "format": "uri",
             "name": "image",
             "short": "URL to an image of the bird",
             "type": "`$STRING`",
@@ -103,11 +114,16 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "float",
             "name": "weight_kg",
             "short": "Average weight in kilograms",
             "type": "`$NUMBER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "bird",
         "op": {
           "list": {
@@ -155,8 +171,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/birds",
-                "parts": [
-                  "birds",
+                "segments": [
+                  {
+                    "lit": "birds",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -171,6 +189,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "birds",
+                ],
               },
             ],
           },
@@ -193,9 +214,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/birds/{id}",
-                "parts": [
-                  "birds",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "birds",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -206,6 +231,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "birds",
+                  "{id}",
+                ],
               },
             ],
           },

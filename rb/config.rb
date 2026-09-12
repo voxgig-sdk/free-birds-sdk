@@ -64,16 +64,19 @@ module FreeBirdsConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "float",
               "name" => "height_cm",
               "short" => "Average height in centimeters",
               "type" => "`$NUMBER`",
             },
             {
+              "format" => "int64",
               "name" => "id",
               "short" => "Unique identifier for the bird",
               "type" => "`$INTEGER`",
             },
             {
+              "format" => "uri",
               "name" => "image",
               "short" => "URL to an image of the bird",
               "type" => "`$STRING`",
@@ -94,11 +97,16 @@ module FreeBirdsConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "float",
               "name" => "weight_kg",
               "short" => "Average weight in kilograms",
               "type" => "`$NUMBER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "bird",
           "op" => {
             "list" => {
@@ -146,8 +154,10 @@ module FreeBirdsConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/birds",
-                  "parts" => [
-                    "birds",
+                  "segments" => [
+                    {
+                      "lit" => "birds",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -162,6 +172,9 @@ module FreeBirdsConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "birds",
+                  ],
                 },
               ],
             },
@@ -184,9 +197,13 @@ module FreeBirdsConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/birds/{id}",
-                  "parts" => [
-                    "birds",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "birds",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -197,6 +214,10 @@ module FreeBirdsConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "birds",
+                    "{id}",
+                  ],
                 },
               ],
             },
