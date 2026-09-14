@@ -105,7 +105,7 @@ local results, err = client:Bird():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/free-birds` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-birds-sdk/releases) |
+| TypeScript | `@voxgig-sdk/free-birds-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-birds-sdk/releases) |
 | Python | `voxgig-sdk-free-birds` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-birds-sdk/releases) |
 | PHP | `voxgig-sdk/free-birds` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-birds-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/free-birds-sdk/go` | `go get github.com/voxgig-sdk/free-birds-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Bird():list()
 ### TypeScript
 
 ```ts
-import { FreeBirdsSDK } from '@voxgig-sdk/free-birds'
+import { FreeBirdsSDK } from '@voxgig-sdk/free-birds-sdk'
 
 const client = new FreeBirdsSDK()
 

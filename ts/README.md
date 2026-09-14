@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { FreeBirdsSDK } from '@voxgig-sdk/free-birds'
+import { FreeBirdsSDK } from '@voxgig-sdk/free-birds-sdk'
 
 const client = new FreeBirdsSDK()
 ```
@@ -445,7 +445,7 @@ free-birds/
 Import the SDK from the package root:
 
 ```ts
-import { FreeBirdsSDK } from '@voxgig-sdk/free-birds'
+import { FreeBirdsSDK } from '@voxgig-sdk/free-birds-sdk'
 ```
 
 ### Entity state
