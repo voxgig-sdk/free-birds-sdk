@@ -57,5 +57,343 @@
         "weight_kg": 450
       }
     }
+  },
+  "requests": {
+    "GET /birds": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getBirds",
+        "parameters": [
+          {
+            "description": "Search term to filter birds by name or other attributes",
+            "in": "query",
+            "name": "search",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Field to sort results by",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "enum": [
+                "name",
+                "species",
+                "family",
+                "habitat"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Sort order",
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "schema": {
+              "default": "asc",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Maximum number of results to return",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 10,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Page number for pagination",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "description": {
+                        "description": "Detailed description of the bird",
+                        "example": "A migratory songbird with a distinctive orange-red breast",
+                        "type": "string"
+                      },
+                      "diet": {
+                        "description": "Primary diet of the bird",
+                        "example": "Insects, fruits, berries",
+                        "type": "string"
+                      },
+                      "family": {
+                        "description": "Bird family classification",
+                        "example": "Turdidae",
+                        "type": "string"
+                      },
+                      "habitat": {
+                        "description": "Primary habitat of the bird",
+                        "example": "Woodlands, gardens, parks",
+                        "type": "string"
+                      },
+                      "height_cm": {
+                        "description": "Average height in centimeters",
+                        "example": 25,
+                        "format": "float",
+                        "type": "number"
+                      },
+                      "id": {
+                        "description": "Unique identifier for the bird",
+                        "example": 1,
+                        "format": "int64",
+                        "type": "integer"
+                      },
+                      "image": {
+                        "description": "URL to an image of the bird",
+                        "example": "https://example.com/images/american-robin.jpg",
+                        "format": "uri",
+                        "type": "string"
+                      },
+                      "name": {
+                        "description": "Common name of the bird",
+                        "example": "American Robin",
+                        "type": "string"
+                      },
+                      "place_of_found": {
+                        "description": "Geographic location where the bird is commonly found",
+                        "example": "North America",
+                        "type": "string"
+                      },
+                      "species": {
+                        "description": "Scientific species name",
+                        "example": "Turdus migratorius",
+                        "type": "string"
+                      },
+                      "weight_kg": {
+                        "description": "Average weight in kilograms",
+                        "example": 0.077,
+                        "format": "float",
+                        "type": "number"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "Error message",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Detailed error description",
+                      "type": "string"
+                    },
+                    "statusCode": {
+                      "description": "HTTP status code",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad request - Invalid parameters"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "Error message",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Detailed error description",
+                      "type": "string"
+                    },
+                    "statusCode": {
+                      "description": "HTTP status code",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /birds/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getBirdById",
+        "parameters": [
+          {
+            "description": "Unique identifier of the bird",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "description": {
+                      "description": "Detailed description of the bird",
+                      "example": "A migratory songbird with a distinctive orange-red breast",
+                      "type": "string"
+                    },
+                    "diet": {
+                      "description": "Primary diet of the bird",
+                      "example": "Insects, fruits, berries",
+                      "type": "string"
+                    },
+                    "family": {
+                      "description": "Bird family classification",
+                      "example": "Turdidae",
+                      "type": "string"
+                    },
+                    "habitat": {
+                      "description": "Primary habitat of the bird",
+                      "example": "Woodlands, gardens, parks",
+                      "type": "string"
+                    },
+                    "height_cm": {
+                      "description": "Average height in centimeters",
+                      "example": 25,
+                      "format": "float",
+                      "type": "number"
+                    },
+                    "id": {
+                      "description": "Unique identifier for the bird",
+                      "example": 1,
+                      "format": "int64",
+                      "type": "integer"
+                    },
+                    "image": {
+                      "description": "URL to an image of the bird",
+                      "example": "https://example.com/images/american-robin.jpg",
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "Common name of the bird",
+                      "example": "American Robin",
+                      "type": "string"
+                    },
+                    "place_of_found": {
+                      "description": "Geographic location where the bird is commonly found",
+                      "example": "North America",
+                      "type": "string"
+                    },
+                    "species": {
+                      "description": "Scientific species name",
+                      "example": "Turdus migratorius",
+                      "type": "string"
+                    },
+                    "weight_kg": {
+                      "description": "Average weight in kilograms",
+                      "example": 0.077,
+                      "format": "float",
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "Error message",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Detailed error description",
+                      "type": "string"
+                    },
+                    "statusCode": {
+                      "description": "HTTP status code",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bird not found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "Error message",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Detailed error description",
+                      "type": "string"
+                    },
+                    "statusCode": {
+                      "description": "HTTP status code",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

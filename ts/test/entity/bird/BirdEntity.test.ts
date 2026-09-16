@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { FreeBirdsSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('BirdEntity', async () => {
 
     const live = 'TRUE' === process.env.FREE_BIRDS_TEST_LIVE
     for (const op of ['list', 'load']) {
-      if (maybeSkipControl(t, 'entityOp', 'bird.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'bird.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set FREE_BIRDS_TEST_BIRD_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"description","req":false,"short":"Detailed description of the bird","type":"`$STRING`","index$":0},{"active":true,"name":"diet","req":false,"short":"Primary diet of the bird","type":"`$STRING`","index$":1},{"active":true,"name":"family","req":false,"short":"Bird family classification","type":"`$STRING`","index$":2},{"active":true,"name":"habitat","req":false,"short":"Primary habitat of the bird","type":"`$STRING`","index$":3},{"active":true,"format":"float","name":"height_cm","req":false,"short":"Average height in centimeters","type":"`$NUMBER`","index$":4},{"active":true,"format":"int64","name":"id","req":false,"short":"Unique identifier for the bird","type":"`$INTEGER`","index$":5},{"active":true,"format":"uri","name":"image","req":false,"short":"URL to an image of the bird","type":"`$STRING`","index$":6},{"active":true,"name":"name","req":false,"short":"Common name of the bird","type":"`$STRING`","index$":7},{"active":true,"name":"place_of_found","req":false,"short":"Geographic location where the bird is commonly found","type":"`$STRING`","index$":8},{"active":true,"name":"species","req":false,"short":"Scientific species name","type":"`$STRING`","index$":9},{"active":true,"format":"float","name":"weight_kg","req":false,"short":"Average weight in kilograms","type":"`$NUMBER`","index$":10}],"id":{"field":"id","name":"id"},"name":"bird","op":{"list":{"input":"data","name":"list","points":[{"active":true,"args":{"query":[{"active":true,"example":10,"kind":"query","name":"limit","orig":"limit","reqd":false,"type":"`$INTEGER`","index$":0},{"active":true,"example":"asc","kind":"query","name":"order","orig":"order","reqd":false,"type":"`$STRING`","index$":1},{"active":true,"example":1,"kind":"query","name":"page","orig":"page","reqd":false,"type":"`$INTEGER`","index$":2},{"active":true,"kind":"query","name":"search","orig":"search","reqd":false,"type":"`$STRING`","index$":3},{"active":true,"kind":"query","name":"sort","orig":"sort","reqd":false,"type":"`$STRING`","index$":4}]},"contract":{"id":"GET /birds","json":"{\"operationId\":\"getBirds\",\"parameters\":[{\"description\":\"Search term to filter birds by name or other attributes\",\"in\":\"query\",\"name\":\"search\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Field to sort results by\",\"in\":\"query\",\"name\":\"sort\",\"required\":false,\"schema\":{\"enum\":[\"name\",\"species\",\"family\",\"habitat\"],\"type\":\"string\"}},{\"description\":\"Sort order\",\"in\":\"query\",\"name\":\"order\",\"required\":false,\"schema\":{\"default\":\"asc\",\"enum\":[\"asc\",\"desc\"],\"type\":\"string\"}},{\"description\":\"Maximum number of results to return\",\"in\":\"query\",\"name\":\"limit\",\"required\":false,\"schema\":{\"default\":10,\"maximum\":100,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Page number for pagination\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"schema\":{\"default\":1,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Detailed description of the bird\",\"example\":\"A migratory songbird with a distinctive orange-red breast\",\"type\":\"string\"},\"diet\":{\"description\":\"Primary diet of the bird\",\"example\":\"Insects, fruits, berries\",\"type\":\"string\"},\"family\":{\"description\":\"Bird family classification\",\"example\":\"Turdidae\",\"type\":\"string\"},\"habitat\":{\"description\":\"Primary habitat of the bird\",\"example\":\"Woodlands, gardens, parks\",\"type\":\"string\"},\"height_cm\":{\"description\":\"Average height in centimeters\",\"example\":25,\"format\":\"float\",\"type\":\"number\"},\"id\":{\"description\":\"Unique identifier for the bird\",\"example\":1,\"format\":\"int64\",\"type\":\"integer\"},\"image\":{\"description\":\"URL to an image of the bird\",\"example\":\"https://example.com/images/american-robin.jpg\",\"format\":\"uri\",\"type\":\"string\"},\"name\":{\"description\":\"Common name of the bird\",\"example\":\"American Robin\",\"type\":\"string\"},\"place_of_found\":{\"description\":\"Geographic location where the bird is commonly found\",\"example\":\"North America\",\"type\":\"string\"},\"species\":{\"description\":\"Scientific species name\",\"example\":\"Turdus migratorius\",\"type\":\"string\"},\"weight_kg\":{\"description\":\"Average weight in kilograms\",\"example\":0.077,\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error description\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Bad request - Invalid parameters\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error description\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/birds","segments":[{"lit":"birds"}],"select":{"exist":["limit","order","page","search","sort"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"id","orig":"id","reqd":true,"type":"`$INTEGER`","index$":0}]},"contract":{"id":"GET /birds/{id}","json":"{\"operationId\":\"getBirdById\",\"parameters\":[{\"description\":\"Unique identifier of the bird\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"format\":\"int64\",\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"Detailed description of the bird\",\"example\":\"A migratory songbird with a distinctive orange-red breast\",\"type\":\"string\"},\"diet\":{\"description\":\"Primary diet of the bird\",\"example\":\"Insects, fruits, berries\",\"type\":\"string\"},\"family\":{\"description\":\"Bird family classification\",\"example\":\"Turdidae\",\"type\":\"string\"},\"habitat\":{\"description\":\"Primary habitat of the bird\",\"example\":\"Woodlands, gardens, parks\",\"type\":\"string\"},\"height_cm\":{\"description\":\"Average height in centimeters\",\"example\":25,\"format\":\"float\",\"type\":\"number\"},\"id\":{\"description\":\"Unique identifier for the bird\",\"example\":1,\"format\":\"int64\",\"type\":\"integer\"},\"image\":{\"description\":\"URL to an image of the bird\",\"example\":\"https://example.com/images/american-robin.jpg\",\"format\":\"uri\",\"type\":\"string\"},\"name\":{\"description\":\"Common name of the bird\",\"example\":\"American Robin\",\"type\":\"string\"},\"place_of_found\":{\"description\":\"Geographic location where the bird is commonly found\",\"example\":\"North America\",\"type\":\"string\"},\"species\":{\"description\":\"Scientific species name\",\"example\":\"Turdus migratorius\",\"type\":\"string\"},\"weight_kg\":{\"description\":\"Average weight in kilograms\",\"example\":0.077,\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error description\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Bird not found\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error description\",\"type\":\"string\"},\"statusCode\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/birds/{id}","segments":[{"lit":"birds"},{"var":"id"}],"select":{"exist":["id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"bird","name__orig":"bird","Name":"Bird","name_":"bird","name-":"bird","NAME":"BIRD","index$":0}, {"active":true,"entity":"bird","key$":"BasicBirdFlow","kind":"basic","name":"BasicBirdFlow","param":{},"step":[{"active":true,"data":{},"input":{},"match":{},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"bird_ref01"}}],"index$":0},{"active":true,"data":{},"input":{"ref":"bird_ref01","srcdatavar":"bird_ref01_data","suffix":"_dt0"},"match":{"id":"bird01"},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-bird_ref01"}}],"index$":1}]}, 'Bird')
     }
     const client = setup.client
     const struct = setup.struct
@@ -116,13 +115,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['FREE_BIRDS_TEST_BIRD_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'FREE_BIRDS_TEST_BIRD_ENTID': idmap,
     'FREE_BIRDS_TEST_LIVE': 'FALSE',
@@ -133,7 +125,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.FREE_BIRDS_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['FREE_BIRDS_TEST_BIRD_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new FreeBirdsSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -145,7 +143,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -158,7 +157,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.FREE_BIRDS_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 
