@@ -105,12 +105,12 @@ local results, err = client:Bird():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/free-birds-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-birds-sdk/releases) |
-| Python | `voxgig-sdk-free-birds` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-birds-sdk/releases) |
-| PHP | `voxgig-sdk/free-birds` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-birds-sdk/releases) |
+| TypeScript | `@voxgig-sdk/free-birds-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-birds-sdk/tags) |
+| Python | `voxgig-sdk-free-birds` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-birds-sdk/tags) |
+| PHP | `voxgig-sdk/free-birds` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-birds-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/free-birds-sdk/go` | `go get github.com/voxgig-sdk/free-birds-sdk/go@latest` |
-| Ruby | `voxgig-sdk-free-birds` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-birds-sdk/releases) |
-| Lua | `voxgig-sdk-free-birds` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-birds-sdk/releases) |
+| Ruby | `voxgig-sdk-free-birds` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-birds-sdk/tags) |
+| Lua | `voxgig-sdk-free-birds` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-birds-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/free-birds-sdk/go-cli` | `go install github.com/voxgig-sdk/free-birds-sdk/go-cli/cmd/free-birds@latest` |
 | Go MCP server | `github.com/voxgig-sdk/free-birds-sdk/go-mcp` | `go get github.com/voxgig-sdk/free-birds-sdk/go-mcp@latest` |
 
