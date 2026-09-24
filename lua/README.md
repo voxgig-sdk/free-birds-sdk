@@ -43,7 +43,7 @@ local birds, err = client:Bird():list()
 if err then error(err) end
 
 for _, item in ipairs(birds) do
-  print(item["id"], item["description"])
+  print(item["id"])
 end
 ```
 

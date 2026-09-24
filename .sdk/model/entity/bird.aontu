@@ -1,0 +1,218 @@
+# Entity: bird
+
+main: kit: entity: bird: {
+
+  alias: field: {}
+
+  fields: {
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Detailed description of the bird"
+      t: "`$STRING`"
+    }
+    diet: {
+      h: "Diet"
+      n: "diet"
+      r: false
+      sh: "Primary diet of the bird"
+      t: "`$STRING`"
+    }
+    family: {
+      h: "Family"
+      n: "family"
+      r: false
+      sh: "Bird family classification"
+      t: "`$STRING`"
+    }
+    habitat: {
+      h: "Habitat"
+      n: "habitat"
+      r: false
+      sh: "Primary habitat of the bird"
+      t: "`$STRING`"
+    }
+    height_cm: {
+      fo: "float"
+      h: "Height Cm"
+      n: "height_cm"
+      r: false
+      sh: "Average height in centimeters"
+      t: "`$NUMBER`"
+    }
+    id: {
+      fo: "int64"
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Unique identifier for the bird"
+      t: "`$INTEGER`"
+    }
+    image: {
+      fo: "uri"
+      h: "Image"
+      n: "image"
+      r: false
+      sh: "URL to an image of the bird"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Common name of the bird"
+      t: "`$STRING`"
+    }
+    place_of_found: {
+      h: "Place Of Found"
+      n: "place_of_found"
+      r: false
+      sh: "Geographic location where the bird is commonly found"
+      t: "`$STRING`"
+    }
+    species: {
+      h: "Species"
+      n: "species"
+      r: false
+      sh: "Scientific species name"
+      t: "`$STRING`"
+    }
+    weight_kg: {
+      fo: "float"
+      h: "Weight Kg"
+      n: "weight_kg"
+      r: false
+      sh: "Average weight in kilograms"
+      t: "`$NUMBER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "bird"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /birds"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 10
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "asc"
+                k: "query"
+                n: "order"
+                or: "order"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "sort"
+                or: "sort"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/birds"
+          q: {
+            exist: [
+              "limit"
+              "order"
+              "page"
+              "search"
+              "sort"
+            ]
+          }
+          s: [
+            {
+              lit: "birds"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /birds/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/birds/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "birds"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

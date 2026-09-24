@@ -1,7 +1,7 @@
 // Typed models for the FreeBirds SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,17 +14,6 @@ import (
 
 // Bird is the typed data model for the bird entity.
 type Bird struct {
-	Description *string `json:"description,omitempty"`
-	Diet *string `json:"diet,omitempty"`
-	Family *string `json:"family,omitempty"`
-	Habitat *string `json:"habitat,omitempty"`
-	HeightCm *float64 `json:"height_cm,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Image *string `json:"image,omitempty"`
-	Name *string `json:"name,omitempty"`
-	PlaceOfFound *string `json:"place_of_found,omitempty"`
-	Species *string `json:"species,omitempty"`
-	WeightKg *float64 `json:"weight_kg,omitempty"`
 }
 
 // BirdLoadMatch is the typed request payload for Bird.LoadTyped.

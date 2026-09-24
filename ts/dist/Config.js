@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -114,62 +107,73 @@ class Config {
             "fields": [
                 {
                     "name": "description",
-                    "short": "Detailed description of the bird",
-                    "type": "`$STRING`"
+                    "title": "Description",
+                    "type": "`$STRING`",
+                    "short": "Detailed description of the bird"
                 },
                 {
                     "name": "diet",
-                    "short": "Primary diet of the bird",
-                    "type": "`$STRING`"
+                    "title": "Diet",
+                    "type": "`$STRING`",
+                    "short": "Primary diet of the bird"
                 },
                 {
                     "name": "family",
-                    "short": "Bird family classification",
-                    "type": "`$STRING`"
+                    "title": "Family",
+                    "type": "`$STRING`",
+                    "short": "Bird family classification"
                 },
                 {
                     "name": "habitat",
-                    "short": "Primary habitat of the bird",
-                    "type": "`$STRING`"
+                    "title": "Habitat",
+                    "type": "`$STRING`",
+                    "short": "Primary habitat of the bird"
                 },
                 {
-                    "format": "float",
                     "name": "height_cm",
+                    "title": "Height Cm",
+                    "type": "`$NUMBER`",
                     "short": "Average height in centimeters",
-                    "type": "`$NUMBER`"
+                    "format": "float"
                 },
                 {
-                    "format": "int64",
                     "name": "id",
+                    "title": "Id",
+                    "type": "`$INTEGER`",
                     "short": "Unique identifier for the bird",
-                    "type": "`$INTEGER`"
+                    "format": "int64"
                 },
                 {
-                    "format": "uri",
                     "name": "image",
+                    "title": "Image",
+                    "type": "`$STRING`",
                     "short": "URL to an image of the bird",
-                    "type": "`$STRING`"
+                    "format": "uri"
                 },
                 {
                     "name": "name",
-                    "short": "Common name of the bird",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "Common name of the bird"
                 },
                 {
                     "name": "place_of_found",
-                    "short": "Geographic location where the bird is commonly found",
-                    "type": "`$STRING`"
+                    "title": "Place Of Found",
+                    "type": "`$STRING`",
+                    "short": "Geographic location where the bird is commonly found"
                 },
                 {
                     "name": "species",
-                    "short": "Scientific species name",
-                    "type": "`$STRING`"
+                    "title": "Species",
+                    "type": "`$STRING`",
+                    "short": "Scientific species name"
                 },
                 {
-                    "format": "float",
                     "name": "weight_kg",
+                    "title": "Weight Kg",
+                    "type": "`$NUMBER`",
                     "short": "Average weight in kilograms",
-                    "type": "`$NUMBER`"
+                    "format": "float"
                 }
             ],
             "id": {
@@ -183,43 +187,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": 10,
-                                        "kind": "query",
-                                        "name": "limit",
-                                        "orig": "limit",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": "asc",
-                                        "kind": "query",
-                                        "name": "order",
-                                        "orig": "order",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "page",
-                                        "orig": "page",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "search",
-                                        "orig": "search",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "sort",
-                                        "orig": "sort",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/birds",
@@ -228,6 +195,51 @@ class Config {
                                     "lit": "birds"
                                 }
                             ],
+                            "parts": [
+                                "birds"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "limit",
+                                        "orig": "limit",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 10
+                                    },
+                                    {
+                                        "name": "order",
+                                        "orig": "order",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "asc"
+                                    },
+                                    {
+                                        "name": "page",
+                                        "orig": "page",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "search",
+                                        "orig": "search",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "sort",
+                                        "orig": "sort",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "limit",
@@ -236,14 +248,7 @@ class Config {
                                     "search",
                                     "sort"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "birds"
-                            ]
+                            }
                         }
                     ]
                 },
@@ -252,17 +257,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/birds/{id}",
@@ -274,19 +268,31 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
+                            "parts": [
+                                "birds",
+                                "{id}"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "birds",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }

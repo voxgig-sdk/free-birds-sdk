@@ -87,62 +87,73 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "description",
-            ["short"] = "Detailed description of the bird",
+            ["title"] = "Description",
             ["type"] = "`$STRING`",
+            ["short"] = "Detailed description of the bird",
           },
           {
             ["name"] = "diet",
-            ["short"] = "Primary diet of the bird",
+            ["title"] = "Diet",
             ["type"] = "`$STRING`",
+            ["short"] = "Primary diet of the bird",
           },
           {
             ["name"] = "family",
-            ["short"] = "Bird family classification",
+            ["title"] = "Family",
             ["type"] = "`$STRING`",
+            ["short"] = "Bird family classification",
           },
           {
             ["name"] = "habitat",
+            ["title"] = "Habitat",
+            ["type"] = "`$STRING`",
             ["short"] = "Primary habitat of the bird",
-            ["type"] = "`$STRING`",
           },
           {
-            ["format"] = "float",
             ["name"] = "height_cm",
-            ["short"] = "Average height in centimeters",
+            ["title"] = "Height Cm",
             ["type"] = "`$NUMBER`",
+            ["short"] = "Average height in centimeters",
+            ["format"] = "float",
           },
           {
-            ["format"] = "int64",
             ["name"] = "id",
-            ["short"] = "Unique identifier for the bird",
+            ["title"] = "Id",
             ["type"] = "`$INTEGER`",
+            ["short"] = "Unique identifier for the bird",
+            ["format"] = "int64",
           },
           {
-            ["format"] = "uri",
             ["name"] = "image",
-            ["short"] = "URL to an image of the bird",
+            ["title"] = "Image",
             ["type"] = "`$STRING`",
+            ["short"] = "URL to an image of the bird",
+            ["format"] = "uri",
           },
           {
             ["name"] = "name",
-            ["short"] = "Common name of the bird",
+            ["title"] = "Name",
             ["type"] = "`$STRING`",
+            ["short"] = "Common name of the bird",
           },
           {
             ["name"] = "place_of_found",
-            ["short"] = "Geographic location where the bird is commonly found",
+            ["title"] = "Place Of Found",
             ["type"] = "`$STRING`",
+            ["short"] = "Geographic location where the bird is commonly found",
           },
           {
             ["name"] = "species",
-            ["short"] = "Scientific species name",
+            ["title"] = "Species",
             ["type"] = "`$STRING`",
+            ["short"] = "Scientific species name",
           },
           {
-            ["format"] = "float",
             ["name"] = "weight_kg",
-            ["short"] = "Average weight in kilograms",
+            ["title"] = "Weight Kg",
             ["type"] = "`$NUMBER`",
+            ["short"] = "Average weight in kilograms",
+            ["format"] = "float",
           },
         },
         ["id"] = {
@@ -156,49 +167,57 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["example"] = 10,
-                      ["kind"] = "query",
-                      ["name"] = "limit",
-                      ["orig"] = "limit",
-                      ["type"] = "`$INTEGER`",
-                    },
-                    {
-                      ["example"] = "asc",
-                      ["kind"] = "query",
-                      ["name"] = "order",
-                      ["orig"] = "order",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["example"] = 1,
-                      ["kind"] = "query",
-                      ["name"] = "page",
-                      ["orig"] = "page",
-                      ["type"] = "`$INTEGER`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "search",
-                      ["orig"] = "search",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "sort",
-                      ["orig"] = "sort",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/birds",
                 ["segments"] = {
                   {
                     ["lit"] = "birds",
+                  },
+                },
+                ["parts"] = {
+                  "birds",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "limit",
+                      ["orig"] = "limit",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                      ["example"] = 10,
+                    },
+                    {
+                      ["name"] = "order",
+                      ["orig"] = "order",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["example"] = "asc",
+                    },
+                    {
+                      ["name"] = "page",
+                      ["orig"] = "page",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                      ["example"] = 1,
+                    },
+                    {
+                      ["name"] = "search",
+                      ["orig"] = "search",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "sort",
+                      ["orig"] = "sort",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
                   },
                 },
                 ["select"] = {
@@ -210,13 +229,6 @@ local function make_config()
                     "sort",
                   },
                 },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "birds",
-                },
               },
             },
           },
@@ -225,17 +237,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["kind"] = "param",
-                      ["name"] = "id",
-                      ["orig"] = "id",
-                      ["reqd"] = true,
-                      ["type"] = "`$INTEGER`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/birds/{id}",
@@ -247,18 +248,30 @@ local function make_config()
                     ["var"] = "id",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "id",
-                  },
+                ["parts"] = {
+                  "birds",
+                  "{id}",
                 },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "birds",
-                  "{id}",
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "id",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "id",
+                  },
                 },
               },
             },
